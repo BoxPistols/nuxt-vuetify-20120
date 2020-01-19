@@ -14,8 +14,11 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/nuxt-vuetify-20120/favicon.ico' }
     ]
+  },
+  router: {
+    base: '/nuxt-vuetify-20120/'
   },
   /*
   ** Customize the progress-bar color
@@ -71,6 +74,7 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.performance.maxAssetSize = 500000;
     }
   }
 }
