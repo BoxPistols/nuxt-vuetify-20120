@@ -1,40 +1,51 @@
 <template>
-<div id="">
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-center">
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Home
-        </v-card-title>
-        <v-card-text>
-          to Content
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/">
-            index
-          </v-btn>
-          <v-btn color="primary" nuxt to="/table">
-            table
-          </v-btn>
-          <v-btn color="primary" nuxt to="/todo">
-            ToDo
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
-</div>
-</template>
-<script>
-export default {
-  name: "",
-  data: () => ({
+<v-container fluid>
+  <v-row>
+    <v-col cols="12">
+      <v-row :align="alignment" :justify="justify" class="grey lighten-5" style="height: 300px;">
+        <v-card v-for="n in 1" :key="n" class="ma-3 pa-6" outlined tile>
 
-  })
+          <v-text-field v-model="placeholder" label="Placeholder" @keyup.enter="addToDo"></v-text-field>
+
+        </v-card>
+      </v-row>
+    </v-col>
+  </v-row>
+</v-container>
+</template>
+
+<script>
+import { mapMutations } from 'Vuex';
+
+export default {
+  data() {
+    return {
+      alignmentsAvailable: [
+        'start',
+        'center',
+        'end',
+        'baseline',
+        'stretch',
+      ],
+      alignment: 'center',
+      dense: false,
+      justifyAvailable: [
+        'start',
+        'center',
+        'end',
+        'space-around',
+        'space-between',
+      ],
+      justify: 'center',
+    }
+  },
+  methods: {
+    addToDo: function() {
+      alert();
+    }
+  }
 }
 </script>
+
 <style lang="scss" scoped>
 </style>
