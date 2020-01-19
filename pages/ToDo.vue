@@ -3,10 +3,9 @@
   <v-row>
     <v-col cols="12">
       <v-row :align="alignment" :justify="justify" class="grey lighten-5" style="height: 300px;">
-        <v-card v-for="n in 1" :key="n" class="ma-3 pa-6" outlined tile>
-
+        <!-- <v-card v-for="n in 1" :key="n" class="ma-3 pa-6" outlined tile> -->
+        <v-card class="ma-3 pa-6" outlined tile>
           <v-text-field v-model="placeholder" label="Placeholder" @keyup.enter="addToDo"></v-text-field>
-
         </v-card>
       </v-row>
     </v-col>
@@ -15,7 +14,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'Vuex';
+import { mapMutations } from 'vuex';
 
 export default {
   data() {
@@ -40,8 +39,8 @@ export default {
     }
   },
   methods: {
-    addToDo: function() {
-      alert();
+    addToDo(e){
+      this.$store.commit('todos/add', e.target.value)
     }
   }
 }

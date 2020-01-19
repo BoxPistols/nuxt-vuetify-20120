@@ -2,6 +2,9 @@
 
 > My spectacular Nuxt.js project
 
+Open This Product:
+https://boxpistols.github.io/nuxt-vuetify-20120/
+
 ## Build Setup
 
 ``` bash
