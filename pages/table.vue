@@ -1,5 +1,5 @@
 <template>
-<v-data-table :headers="headers" :items="desserts" sort-by="calories" class="elevation-1">
+<v-data-table :headers="headers" :items="desserts" sort-by="calories" class="elevation-1 mt-5">
   <template v-slot:top>
     <v-toolbar flat color="white">
       <v-toolbar-title>My CRUD</v-toolbar-title>
@@ -21,7 +21,7 @@
                   <v-text-field v-model="editedItem.name" label="Dessert name"></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
+                  <v-text-field v-model="editedItem.calories" label="Calories"> {{ caloriesNum }} </v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field v-model="editedItem.fat" label="Fat (g)"></v-text-field>
@@ -115,6 +115,9 @@ export default {
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+    },
+    caloriesNum()　{
+      return this.editedItem.calories >= 200 ? 'New Item' : 'Edit Item'
     },
   },
 

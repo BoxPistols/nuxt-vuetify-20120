@@ -16,10 +16,9 @@
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="item.title"/>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -48,7 +47,18 @@
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
+
+      <!-- <v-toolbar-title v-text="title"> -->
+      <!-- <v-btn color="info" nuxt to="/home">
+        home
+      </v-btn> -->
+
+      <v-tabs>
+         <!-- <v-tab nuxt to="/">Index</v-tab> -->
+         <v-tab nuxt to="/home">Home</v-tab>
+         <v-tab nuxt to="/table">Table</v-tab>
+       </v-tabs>
+
       <v-spacer />
       <v-btn
         icon
@@ -103,8 +113,8 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'Home',
+          to: '/home'
         }
       ],
       miniVariant: false,

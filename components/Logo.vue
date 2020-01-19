@@ -14,8 +14,8 @@
   transform: rotateX(180deg);
   position: relative;
   overflow: hidden;
-  height: calc(180px / 2);
-  width: calc(245px / 2);
+  height: calc(180px / 4);
+  width: calc(245px / 4);
 }
 
 .Triangle {
