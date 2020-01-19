@@ -45,6 +45,7 @@
       </v-dialog>
     </v-toolbar>
   </template>
+
   <template v-slot:item.action="{ item }">
     <v-icon small class="mr-2" @click="editItem(item)">
       edit
@@ -53,9 +54,11 @@
       delete
     </v-icon>
   </template>
+
   <template v-slot:no-data>
     <v-btn color="primary" @click="initialize">Reset</v-btn>
   </template>
+
 </v-data-table>
 </template>
 
@@ -235,5 +238,4 @@ export default {
 @import 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900';
 @import 'https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css';
 @import 'https://fonts.googleapis.com/css?family=Material+Icons';
-
 </style>
