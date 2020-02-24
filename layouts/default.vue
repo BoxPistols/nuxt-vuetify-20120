@@ -57,7 +57,8 @@
          <!-- <v-tab nuxt to="/">Index</v-tab> -->
          <v-tab nuxt to="/home">Home</v-tab>
          <v-tab nuxt to="/table">Table</v-tab>
-         <v-tab nuxt to="/todo">ToDo</v-tab>
+         <v-tab nuxt to="/layout">Layout</v-tab>
+         <!-- <v-tab nuxt to="/todo">ToDo</v-tab> -->
        </v-tabs>
 
       <v-spacer />
