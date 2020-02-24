@@ -159,6 +159,70 @@
 
             <v-card class="pa-1" outlined tile>
               <v-col cols="12">
+
+
+                <!-- Dialog -->
+                <v-card class="mb-4">
+                  <v-tabs vertical>
+                    <v-tab>
+                      <v-icon left>mdi-account</v-icon>
+                      Team 1
+                    </v-tab>
+                    <v-tab>
+                      <v-icon left>mdi-lock</v-icon>
+                      Team 2
+                    </v-tab>
+                    <v-tab>
+                      <v-icon left>mdi-access-point</v-icon>
+                      Team 3
+                    </v-tab>
+
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text>
+                          <p>
+                            Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+                          </p>
+                          <p class="mb-0">
+                            Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
+                          </p>
+                        </v-card-text>
+                      </v-card>
+                    </v-tab-item>
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text>
+                          <p>
+                            Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor
+                            urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
+                          </p>
+
+                          <p class="mb-0">
+                            Donec venenatis vulputate lorem. Aenean viverra rhoncus pede. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce commodo aliquam arcu. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec,
+                            nisi.
+                          </p>
+                        </v-card-text>
+                      </v-card>
+                    </v-tab-item>
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text>
+                          <p>
+                            Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget,
+                            vestibulum et, tempor auctor, justo.
+                          </p>
+
+                          <p class="mb-0">
+                            Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus
+                            interdum sagittis.
+                          </p>
+                        </v-card-text>
+                      </v-card>
+                    </v-tab-item>
+                  </v-tabs>
+                </v-card>
+
+
                 <!-- Main team-->
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12" class="d-flex">
@@ -183,6 +247,22 @@
 
                     <v-col cols="6">
                       <p>Team Select</p>
+
+                      <v-dialog v-model="dialog" persistent max-width="290">
+                        <template v-slot:activator="{ on }">
+                          <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
+                        </template>
+                        <v-card>
+                          <v-card-title class="headline">Use Google's location service?</v-card-title>
+                          <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green darken-1" text @click="dialog = false">Disagree</v-btn>
+                            <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+
                     </v-col>
                   </v-col>
                 </v-card>
@@ -202,7 +282,7 @@
                 </v-card>
 
                 <!-- ToDo List -->
-                <v-card class="totoList pa-1" outlined tile>
+                <v-card class="totoList pa-1 mt-4" outlined tile>
                   <v-col cols="12" class="">
                     <div>
                       <!-- v-on:keyup.enter="addTodo(newItemTitle) -->
@@ -215,9 +295,9 @@
                       </select>
 
                       <select v-model="newItemJob">
-                        <option value="selectA">selectA</option>
-                        <option value="selectB">selectB</option>
-                        <option value="selectC">selectC</option>
+                        <option value="19:00">19:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="6:00">6:00</option>
                       </select>
 
                       <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button>
@@ -282,33 +362,33 @@ export default {
     modal: false,
     dialog: false,
     items: [{
-        title: 'nameA',
+        title: 'DayWork',
         isChecked: false,
         selItem: "08:00",
-        itemJob: "selectA"
+        itemJob: "19:00"
       },
-      {
-        title: 'nameB',
-        isChecked: true,
-        selItem: "22:00",
-        itemJob: "selectB"
-      },
-      {
-        title: 'nameC',
-        isChecked: false,
-        selItem: "12:00",
-        itemJob: "selectC"
-      },
-      {
-        title: 'nameD',
-        isChecked: false,
-        selItem: "08:00",
-        itemJob: "selectA"
-      },
+      // {
+      //   title: 'nameB',
+      //   isChecked: true,
+      //   selItem: "22:00",
+      //   itemJob: "12:00"
+      // },
+      // {
+      //   title: 'nameC',
+      //   isChecked: false,
+      //   selItem: "12:00",
+      //   itemJob: "6:00"
+      // },
+      // {
+      //   title: 'nameD',
+      //   isChecked: false,
+      //   selItem: "08:00",
+      //   itemJob: "19:00"
+      // },
     ],
-    newItemTitle: '08:00',
+    newItemTitle: 'DayWork',
     newItemSelect: '08:00',
-    newItemJob: 'selectA',
+    newItemJob: '19:00',
 
     active: false,
   }),
@@ -324,9 +404,9 @@ export default {
           isChecked: false,
         });
       }
-      this.newItemTitle = '08:00'
+      this.newItemTitle = 'DayWork'
       this.newItemSelect = '08:00'
-      this.newItemJob = 'selectA'
+      this.newItemJob = '19:00'
     },
     deleteTodo: function() {
       this.items = this.items.filter(function(item) {
@@ -372,13 +452,13 @@ export default {
     margin: 4px
     outline: none
     border: 1px solid #ccc
-    font-size: 18px
+    font-size: 16px
     background: none
-    background-color: aliceblue
-    border-radius: 6px
-    padding: 8px
+    background-color: #eee
+    border-radius: 4px
+    padding: 4px
   select
-   height: 40px
+   height: 32px
 
 
 </style>
