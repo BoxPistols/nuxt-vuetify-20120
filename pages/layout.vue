@@ -151,45 +151,83 @@
               </v-col>
             </v-card>
             <!-- /Week Conditions -->
-
-
           </v-col>
           <!-- /Layout-Left  -->
 
+          <!-- Main -->
           <v-col cols="6">
-            <v-card class="pa-2" outlined tile>
+
+            <v-card class="pa-1" outlined tile>
               <v-col cols="12">
+                <!-- Main team-->
                 <v-card class="pa-1" outlined tile>
-                  M
+                  <v-col cols="12" class="d-flex">
+                    <v-col cols="6">
+                      <h3 class="pb-3">Team Setting</h3>
+                      <!-- <h4 class="pb-1">Weekdays</h4> -->
+                      <div class="d-flex flex-column">
+                        <div class="form_title">NewTeam：</div>
+                        <div class="form_field">
+                          <v-text-field label="" single-line></v-text-field>
+                        </div>
+                        <div class="form_title">Team Name：</div>
+                        <div class="form_field">
+                          <v-text-field label="" single-line></v-text-field>
+                        </div>
+                        <div class="form_title">Team Count：</div>
+                        <div class="form_field">
+                          <v-text-field label="" single-line></v-text-field>
+                        </div>
+                      </div>
+                    </v-col>
+
+                    <v-col cols="6">
+                      <p>Team Select</p>
+                    </v-col>
+                  </v-col>
                 </v-card>
+                <!-- /Week Conditions -->
               </v-col>
 
               <v-col cols="12">
                 <v-card class="pa-1" outlined tile>
-                  M
+                  <ul class="menberLists">
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                  </ul>
                 </v-card>
               </v-col>
-
             </v-card>
           </v-col>
+          <!-- /Main -->
 
           <v-col cols="3">
             <v-card class="pt-2" outlined style="" tile>
               <v-col cols="12">
-                  <ul class="menberLists">
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                    <li>MemberName/ vacation days / OverTime</li>
-                  </ul>
+                <ul class="menberLists">
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                  <li draggable>MemberName/ vacation days / OverTime</li>
+                </ul>
               </v-col>
             </v-card>
           </v-col>
