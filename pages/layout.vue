@@ -272,7 +272,15 @@
               <!-- Members List-->
               <v-col cols="12">
                 <v-card class="pa-1" outlined tile>
-                  <ul class="menberLists">
+                  <h4 class="totoList pt-1 pl-2 mb-2">Members</h4>
+                  <ul class="menberLists pa-2">
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
+                    <li>MemberName/ Skill / Hope Day Job Night</li>
                     <li>MemberName/ Skill / Hope Day Job Night</li>
                     <li>MemberName/ Skill / Hope Day Job Night</li>
                     <li>MemberName/ Skill / Hope Day Job Night</li>
@@ -285,15 +293,16 @@
                 <v-card class="totoList pa-1 mt-4" outlined tile>
                   <v-col cols="12" class="">
                     <div>
+                      <h4 class="totoList pt-1 mb-2">Work Styles</h4>
                       <!-- v-on:keyup.enter="addTodo(newItemTitle) -->
-                      <input type="text" placeholder="TODOを入力しましょう！" v-model="newItemTitle">
+                      <input type="text" placeholder="input Style" v-model="newItemTitle">
 
                       <select v-model="newItemSelect">
                         <option value="08:00">08:00</option>
                         <option value="22:00">22:00</option>
                         <option value="12:00">12:00</option>
                       </select>
-
+                      〜
                       <select v-model="newItemJob">
                         <option value="19:00">19:00</option>
                         <option value="12:00">12:00</option>
@@ -307,13 +316,13 @@
                       <li v-for="item in items" :key="item.index">
                         <p>
                           <label v-bind:class="{ done: item.isChecked }">
-                            {{ item.title }} / {{ item.selItem }} / {{ item.itemJob }} <input type="checkbox" v-model="item.isChecked">
+                            {{ item.title }} ｜ {{ item.selItem }} 〜 {{ item.itemJob }} <input type="checkbox" v-model="item.isChecked">
                           </label>
                         </p>
                       </li>
                     </ul>
 
-                    <button v-on:click="deleteTodo()">チェック済みの項目を削除する</button>
+                    <button v-on:click="deleteTodo()">Delete</button>
 
                   </v-col>
                 </v-card>
@@ -327,6 +336,7 @@
           <v-col cols="3">
             <v-card class="pt-2" outlined style="" tile>
               <v-col cols="12">
+                <h4 class="totoList pt-1 mb-2">Members</h4>
                 <ul class="menberLists">
                   <li draggable>MemberName/ vacation days / OverTime</li>
                   <li draggable>MemberName/ vacation days / OverTime</li>
@@ -441,11 +451,14 @@ export default {
 
 // todo
 .totoList
+  ul
+    margin-top: 12px
   li
-    line-height: 2
+    line-height: 1.5
     list-style: none
     display: flex
     width: 100%
+    margin-left: 12px
   .done
     text-decoration: line-through
   input, button, select
