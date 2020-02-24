@@ -1,8 +1,8 @@
 <template>
 <v-app class="grey lighten-5">
-  <v-row class="d-flex flex-nowrap" width="1200">
+  <v-row class="d-flex flex-nowrap" width="">
     <!-- Outer -->
-    <v-col cols="12">
+    <v-col cols="12" class="wrap">
       <v-card class="pa-1" outlined tile>
 
         <v-row no-gutters>
@@ -16,7 +16,7 @@
         <v-row>
 
           <!-- Layout-Left  -->
-          <v-col cols="3">
+          <v-col cols="3" style="">
             <!-- Basic Conditions -->
             <v-card class="pa-1" outlined tile>
               <v-col cols="12">
@@ -47,6 +47,7 @@
               </v-col>
             </v-card>
             <!-- /Basic Conditions -->
+
             <!-- Month Conditions -->
             <v-card class="pa-1" outlined tile>
               <v-col cols="12">
@@ -95,6 +96,63 @@
               </v-col>
             </v-card>
             <!-- /Month Conditions -->
+
+            <!-- Week Conditions -->
+            <v-card class="pa-1" outlined tile>
+              <v-col cols="12">
+                <v-card class="pa-1" outlined tile>
+                  <v-col cols="12">
+                    <h3 class="pb-3">Week Conditions</h3>
+                    <!-- <h4 class="pb-1">Weekdays</h4> -->
+
+                    <div class="d-flex flex-column">
+                      <h5 class="grey lighten-2 pa-1 mb-2 mt-1">Hi Class：</h5>
+                      <div class="form_title"></div>
+                      <div class="form_field">
+                        <v-text-field label="Weekdays" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Saturday" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Holiday" value="0" type="number" suffix=""></v-text-field>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                      <h5 class="grey lighten-2 pa-1 mb-2 mt-1">Mid Class：</h5>
+                      <div class="form_title"></div>
+                      <div class="form_field">
+                        <v-text-field label="Weekdays" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Saturday" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Holiday" value="0" type="number" suffix=""></v-text-field>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                      <h5 class="grey lighten-2 pa-1 mb-2 mt-1">Low Class：</h5>
+                      <div class="form_title"></div>
+                      <div class="form_field">
+                        <v-text-field label="Weekdays" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Saturday" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Holiday" value="0" type="number" suffix=""></v-text-field>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                      <h5 class="grey lighten-2 pa-1 mb-2 mt-1">Sub Class：</h5>
+                      <div class="form_title"></div>
+                      <div class="form_field">
+                        <v-text-field label="Weekdays" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Saturday" value="0" type="number" suffix=""></v-text-field>
+                        <v-text-field label="Holiday" value="0" type="number" suffix=""></v-text-field>
+                      </div>
+                    </div>
+
+                  </v-col>
+
+                </v-card>
+              </v-col>
+            </v-card>
+            <!-- /Week Conditions -->
+
+
           </v-col>
           <!-- /Layout-Left  -->
 
@@ -145,6 +203,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.wrap
+  max-width: 1600px
+  min-width: 80vw
+  width: 100%
 .form_title
   font-size: 13px
 .v-input.theme--light.v-text-field.v-text-field--single-line.v-text-field--is-booted
