@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="d-flex flex-column">
-                      <div class="form_title">NightWork：</div>
+                      <div class="form_title">22:00：</div>
                       <div class="form_field">
                         <v-text-field label="" single-line></v-text-field>
                       </div>
@@ -187,8 +187,9 @@
                   </v-col>
                 </v-card>
                 <!-- /Week Conditions -->
-              </v-col>
 
+              </v-col>
+              <!-- Members List-->
               <v-col cols="12">
                 <v-card class="pa-1" outlined tile>
                   <ul class="menberLists">
@@ -197,15 +198,47 @@
                     <li>MemberName/ Skill / Hope Day Job Night</li>
                     <li>MemberName/ Skill / Hope Day Job Night</li>
                     <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
-                    <li>MemberName/ Skill / Hope Day Job Night</li>
                   </ul>
                 </v-card>
+
+                <!-- ToDo List -->
+                <v-card class="totoList pa-1" outlined tile>
+                  <v-col cols="12" class="">
+                    <div>
+                      <!-- v-on:keyup.enter="addTodo(newItemTitle) -->
+                      <input type="text" placeholder="TODOを入力しましょう！" v-model="newItemTitle">
+
+                      <select v-model="newItemSelect">
+                        <option value="08:00">08:00</option>
+                        <option value="22:00">22:00</option>
+                        <option value="12:00">12:00</option>
+                      </select>
+
+                      <select v-model="newItemJob">
+                        <option value="selectA">selectA</option>
+                        <option value="selectB">selectB</option>
+                        <option value="selectC">selectC</option>
+                      </select>
+
+                      <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button>
+                    </div>
+
+                    <ul>
+                      <li v-for="item in items" :key="item.index">
+                        <p>
+                          <label v-bind:class="{ done: item.isChecked }">
+                            {{ item.title }} / {{ item.selItem }} / {{ item.itemJob }} <input type="checkbox" v-model="item.isChecked">
+                          </label>
+                        </p>
+                      </li>
+                    </ul>
+
+                    <button v-on:click="deleteTodo()">チェック済みの項目を削除する</button>
+
+                  </v-col>
+                </v-card>
+                <!-- /ToDo List -->
+
               </v-col>
             </v-card>
           </v-col>
@@ -247,7 +280,60 @@ export default {
     date: new Date().toISOString().substr(0, 7),
     menu: false,
     modal: false,
+    dialog: false,
+    items: [{
+        title: 'nameA',
+        isChecked: false,
+        selItem: "08:00",
+        itemJob: "selectA"
+      },
+      {
+        title: 'nameB',
+        isChecked: true,
+        selItem: "22:00",
+        itemJob: "selectB"
+      },
+      {
+        title: 'nameC',
+        isChecked: false,
+        selItem: "12:00",
+        itemJob: "selectC"
+      },
+      {
+        title: 'nameD',
+        isChecked: false,
+        selItem: "08:00",
+        itemJob: "selectA"
+      },
+    ],
+    newItemTitle: '08:00',
+    newItemSelect: '08:00',
+    newItemJob: 'selectA',
+
+    active: false,
   }),
+  methods: { //methodsオプションをまるっと追加
+    addTodo: function(newItemTitle, newItemSelect, newItemJob) {
+      if (this.newItemTitle.length < 1) {
+        return false
+      } else {
+        this.items.push({
+          title: newItemTitle,
+          selItem: newItemSelect,
+          itemJob: newItemJob,
+          isChecked: false,
+        });
+      }
+      this.newItemTitle = '08:00'
+      this.newItemSelect = '08:00'
+      this.newItemJob = 'selectA'
+    },
+    deleteTodo: function() {
+      this.items = this.items.filter(function(item) {
+        return item.isChecked === false //チェックが付いていないものはスルーする
+      });
+    },
+  },
 }
 </script>
 
@@ -272,4 +358,27 @@ export default {
     margin-bottom: 12px
 .v-application ul, .v-application ol
     padding-left: 0
+
+// todo
+.totoList
+  li
+    line-height: 2
+    list-style: none
+    display: flex
+    width: 100%
+  .done
+    text-decoration: line-through
+  input, button, select
+    margin: 4px
+    outline: none
+    border: 1px solid #ccc
+    font-size: 18px
+    background: none
+    background-color: aliceblue
+    border-radius: 6px
+    padding: 8px
+  select
+   height: 40px
+
+
 </style>
