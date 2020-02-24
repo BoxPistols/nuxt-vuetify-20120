@@ -7,20 +7,43 @@
 
         <v-row no-gutters>
           <v-col cols="12">
-            <v-card class="pa-1" outlined tile>
-              Setting
+            <v-card class="pa-2 pl-4" outlined tile>
+              <h2>Setting</h2>
             </v-card>
           </v-col>
         </v-row>
-        <v-row no-gutters>
 
-
+        <v-row>
           <v-col cols="3">
             <v-card class="pa-1" outlined tile>
-
               <v-col cols="12">
                 <v-card class="pa-1" outlined tile>
-                  L
+                  <v-col cols="12">
+
+                    <h3 class="pb-4">Basic</h3>
+
+                    <v-switch v-model="switch1" :label="`Lock: ${switch1.toString()}`"></v-switch>
+
+                    <div class="d-flex flex-column">
+                      <div class="form_title">MemberID：</div>
+                      <div class="form_field">
+                        <v-text-field label="" single-line></v-text-field>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="form_title">Boss Name：</div>
+                      <div class="form_field">
+                        <v-text-field label="" single-line></v-text-field>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="form_title">Team：</div>
+                      <div class="form_field">
+                        <v-text-field label="" single-line></v-text-field>
+                      </div>
+                    </div>
+                  </v-col>
+
                 </v-card>
               </v-col>
               <v-col cols="12">
@@ -67,28 +90,24 @@
         </v-row>
       </v-card>
     </v-col>
-  </v-row>
 
+  </v-row>
 </v-app>
 </template>
 
 <script>
 export default {
   data: () => ({
-    // justify: [
-    //   'start',
-    //   'end',
-    //   'center',
-    //   'space-between',
-    //   'space-around',
-    // ],
+    switch1: true,
   }),
 }
 </script>
 
 <style lang="sass" scoped>
-.wrap
-  width: 100%
-  height: 100vh
-  background: #000
+.form_title
+  white-space: nowrap
+  text-align: left
+  // width: 50%
+.v-input
+  margin: 0
 </style>
