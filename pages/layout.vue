@@ -1,6 +1,6 @@
 <template>
 <v-app class="grey lighten-5">
-  <v-row>
+  <v-row class="d-flex flex-nowrap" width="1200">
     <!-- Outer -->
     <v-col cols="12">
       <v-card class="pa-1" outlined tile>
@@ -8,22 +8,22 @@
         <v-row no-gutters>
           <v-col cols="12">
             <v-card class="pa-2 pl-4" outlined tile>
-              <h2>Setting</h2>
+              <h2>Setting Manu</h2>
             </v-card>
           </v-col>
         </v-row>
 
         <v-row>
+
+          <!-- Layout-Left  -->
           <v-col cols="3">
+            <!-- Basic Conditions -->
             <v-card class="pa-1" outlined tile>
               <v-col cols="12">
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12">
-
-                    <h3 class="pb-4">Basic</h3>
-
+                    <h3 class="pb-2">Basic Conditions</h3>
                     <v-switch v-model="switch1" :label="`Lock: ${switch1.toString()}`"></v-switch>
-
                     <div class="d-flex flex-column">
                       <div class="form_title">MemberID：</div>
                       <div class="form_field">
@@ -43,22 +43,60 @@
                       </div>
                     </div>
                   </v-col>
-
                 </v-card>
               </v-col>
-              <v-col cols="12">
-                <v-card class="pa-1" outlined tile>
-                  L
-                </v-card>
-              </v-col>
-              <v-col cols="12">
-                <v-card class="pa-1" outlined tile>
-                  L
-                </v-card>
-              </v-col>
-
             </v-card>
+            <!-- /Basic Conditions -->
+            <!-- Month Conditions -->
+            <v-card class="pa-1" outlined tile>
+              <v-col cols="12">
+                <v-card class="pa-1" outlined tile>
+                  <v-col cols="12">
+                    <h3 class="pb-4">Month Conditions </h3>
+                    <!-- Date Picker -->
+                    <div class="d-flex flex-column">
+                      <div class="form_title">Pick Month：</div>
+                      <div class="form_field">
+                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y max-width="290px" min-width="290px">
+                          <template v-slot:activator="{ on }">
+                            <v-text-field v-model="date" label="" prepend-icon="event" readonly v-on="on"></v-text-field>
+                          </template>
+                          <v-date-picker v-model="date" type="month" :landscape="landscape" :reactive="reactive" locale="jp-ja" :day-format="date => new Date(date).getDate()" no-title scrollable>
+                            <v-spacer></v-spacer>
+                            <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+                            <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                          </v-date-picker>
+                        </v-menu>
+                      </div>
+                    </div>
+                    <!-- / Date Picker -->
+
+                    <div class="d-flex flex-column">
+                      <div class="form_title">WorkTime：</div>
+                      <div class="form_field">
+                        <v-text-field label="" single-line></v-text-field>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="form_title">Holiday：</div>
+                      <div class="form_field">
+                        <v-text-field label="" single-line></v-text-field>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column">
+                      <div class="form_title">NightWork：</div>
+                      <div class="form_field">
+                        <v-text-field label="" single-line></v-text-field>
+                      </div>
+                    </div>
+                  </v-col>
+                </v-card>
+              </v-col>
+            </v-card>
+            <!-- /Month Conditions -->
           </v-col>
+          <!-- /Layout-Left  -->
 
           <v-col cols="6">
             <v-card class="pa-2" outlined tile>
@@ -99,15 +137,20 @@
 export default {
   data: () => ({
     switch1: true,
+    date: new Date().toISOString().substr(0, 7),
+    menu: false,
+    modal: false,
   }),
 }
 </script>
 
 <style lang="sass" scoped>
 .form_title
-  white-space: nowrap
-  text-align: left
-  // width: 50%
-.v-input
+  font-size: 13px
+.v-input.theme--light.v-text-field.v-text-field--single-line.v-text-field--is-booted
   margin: 0
+  padding: 0
+// .v-input__control
+  // height: 32px
+
 </style>
