@@ -174,11 +174,22 @@
           </v-col>
 
           <v-col cols="3">
-            <v-card class="pa-2" outlined style="background-color: lightgrey;" tile>
+            <v-card class="pt-2" outlined style="" tile>
               <v-col cols="12">
-                <v-card class="pa-1" outlined tile>
-                  R
-                </v-card>
+                  <ul class="menberLists">
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                    <li>MemberName/ vacation days / OverTime</li>
+                  </ul>
               </v-col>
             </v-card>
           </v-col>
@@ -212,7 +223,15 @@ export default {
 .v-input.theme--light.v-text-field.v-text-field--single-line.v-text-field--is-booted
   margin: 0
   padding: 0
-// .v-input__control
-  // height: 32px
-
+.menberLists
+  ul
+    padding: 0
+  li
+    list-style: none
+    border: 1px solid #ccc
+    border-radius: 2px
+    padding: 12px
+    margin-bottom: 12px
+.v-application ul, .v-application ol
+    padding-left: 0
 </style>
