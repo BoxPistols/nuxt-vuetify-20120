@@ -3,7 +3,7 @@
   <v-row class="d-flex flex-nowrap" width="">
     <!-- Outer -->
     <v-col cols="12" class="wrap">
-      <v-card class="pa-1" outlined tile>
+      <v-card class="pa-2" outlined tile>
 
         <v-row no-gutters>
           <v-col lg="6">
@@ -22,7 +22,7 @@
           </v-col>
         </v-row>
 
-        <v-tabs color="teal" slider-color="teal">
+        <v-tabs class="ml-3" color="teal" slider-color="teal">
           <v-tab ripple>病院条件</v-tab>
           <v-tab ripple>個人条件</v-tab>
 
@@ -36,25 +36,27 @@
                   <v-col cols="12">
                     <v-card class="pa-1" outlined tile>
                       <v-col cols="12">
-                        <h3 class="pb-2">基本条件入力</h3>
-                        <div class="mt-4 d-flex flex-column">
-                          <div class="form_title">所定労働時間</div>
-                          <div class="form_field">
-                            <v-text-field label="時間" single-line></v-text-field>
+                        <h3 class="pb-2 ml-2">基本条件入力</h3>
+                        <v-col cols="8">
+                          <div class="mt-4 d-flex flex-column">
+                            <div class="form_title">所定労働時間</div>
+                            <div class="form_field">
+                              <v-text-field label="時間" single-line></v-text-field>
+                            </div>
                           </div>
-                        </div>
-                        <div class="d-flex flex-column">
-                          <div class="form_title">総夜勤時間：</div>
-                          <div class="form_field">
-                            <v-text-field label="時間" single-line></v-text-field>
+                          <div class="d-flex flex-column">
+                            <div class="form_title">総夜勤時間：</div>
+                            <div class="form_field">
+                              <v-text-field label="時間" single-line></v-text-field>
+                            </div>
                           </div>
-                        </div>
-                        <div class="d-flex flex-column">
-                          <div class="form_title">公休：</div>
-                          <div class="form_field">
-                            <v-text-field label="日" single-line></v-text-field>
+                          <div class="d-flex flex-column">
+                            <div class="form_title">公休：</div>
+                            <div class="form_field">
+                              <v-text-field label="日" single-line></v-text-field>
+                            </div>
                           </div>
-                        </div>
+                        </v-col>
                       </v-col>
                     </v-card>
                   </v-col>
@@ -67,23 +69,24 @@
                 <v-card class="totoList pa-1 mt-4" outlined tile>
                   <v-col cols="12" class="">
                     <div>
-                      <h4 class="totoList pt-1 mb-2">Work Styles</h4>
+                      <h3 class="totoList pl-2 mb-2">勤務種類の作成</h3>
                       <!-- v-on:keyup.enter="addTodo(newItemTitle) -->
-                      <input type="text" placeholder="input Style" v-model="newItemTitle">
-
-                      <select v-model="newItemSelect">
-                        <option value="08:00">08:00</option>
-                        <option value="22:00">22:00</option>
-                        <option value="12:00">12:00</option>
-                      </select>
-                      〜
-                      <select v-model="newItemJob">
-                        <option value="19:00">19:00</option>
-                        <option value="12:00">12:00</option>
-                        <option value="6:00">6:00</option>
-                      </select>
-
-                      <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button>
+                      <table class="working_type">
+                        <tbody>
+                          <th>勤務種類</th>
+                          <th>開始時間</th>
+                          <th>終了時間</th>
+                          <tr>
+                            <td><input class="works" type="text" placeholder="日勤" v-model="newItemTitle"></td>
+                            <td><input class="time start" type="text" placeholder="0800" v-model="newItemSelect"> 〜</td>
+                            <td><input  class="time end" type="text" placeholder="1800" v-model="newItemJob"></td>
+                            <td> <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- <input type="text" placeholder="勤務種類" v-model="newItemTitle">
+                      <input type="text" placeholder="開始時間" v-model="newItemSelect">
+                      <input type="text" placeholder="終了時間" v-model="newItemJob">-->
                     </div>
 
                     <ul>
@@ -95,8 +98,7 @@
                         </p>
                       </li>
                     </ul>
-
-                    <button v-on:click="deleteTodo()">Delete</button>
+                    <button v-on:click="deleteTodo()">選択削除</button>
 
                   </v-col>
                 </v-card>
@@ -271,14 +273,14 @@ export default {
     days_max: '',
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
     items: [{
-      title: 'DayWork',
+      title: '日勤',
       isChecked: false,
-      selItem: "08:00",
-      itemJob: "19:00"
+      selItem: "0800",
+      itemJob: "1800"
     }, ],
-    newItemTitle: 'DayWork',
-    newItemSelect: '08:00',
-    newItemJob: '19:00',
+    newItemTitle: '日勤',
+    newItemSelect: '0800',
+    newItemJob: '1800',
     active: false,
   }),
   created: function() {
@@ -296,9 +298,9 @@ export default {
           isChecked: false,
         });
       }
-      this.newItemTitle = 'DayWork'
-      this.newItemSelect = '08:00'
-      this.newItemJob = '19:00'
+      this.newItemTitle = '日勤'
+      this.newItemSelect = '0800'
+      this.newItemJob = '1800'
     },
     deleteTodo: function() {
       this.items = this.items.filter(function(item) {
@@ -321,7 +323,7 @@ h1,h2,h3,h4
   min-width: 80vw
   width: 100%
 .form_title
-  font-size: 13px
+  font-size: 14px
 .v-input.theme--light.v-text-field.v-text-field--single-line.v-text-field--is-booted
   margin: 0
   padding: 0
@@ -340,7 +342,7 @@ h1,h2,h3,h4
 // todo
 .totoList
   ul
-    margin-top: 12px
+    margin-top: 16px
   li
     line-height: 1.5
     list-style: none
@@ -355,10 +357,22 @@ h1,h2,h3,h4
     border: 1px solid #ccc
     font-size: 16px
     background: none
-    background-color: #eee
+    // background-color: #eee
     border-radius: 4px
-    padding: 4px
+    padding: 4px 8px
   select
    height: 32px
 
+table.working_type
+  th
+    text-align: left
+    font-weight: normal
+    padding-left: 14px
+    font-size: 14px
+    color: gray
+  input
+    &.works
+      width: 8em
+    &.time
+      width: 6em
 </style>
