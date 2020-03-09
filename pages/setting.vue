@@ -79,7 +79,7 @@
                           <tr>
                             <td><input class="works" type="text" placeholder="日勤" v-model="newItemTitle"></td>
                             <td><input class="time start" type="text" placeholder="0800" v-model="newItemSelect"> 〜</td>
-                            <td><input  class="time end" type="text" placeholder="1800" v-model="newItemJob"></td>
+                            <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td>
                             <td> <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button></td>
                           </tr>
                         </tbody>
@@ -112,75 +112,11 @@
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12">
 
-                    <!-- Dialog -->
-                    <v-card class="mb-4">
-                      <v-tabs vertical>
-                        <v-tab>
-                          <v-icon left>mdi-account</v-icon>
-                          Team 1
-                        </v-tab>
-                        <v-tab>
-                          <v-icon left>mdi-lock</v-icon>
-                          Team 2
-                        </v-tab>
-                        <v-tab>
-                          <v-icon left>mdi-access-point</v-icon>
-                          Team 3
-                        </v-tab>
-
-                        <v-tab-item>
-                          <v-card flat>
-                            <v-card-text>
-                              <p>
-                                Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-                              </p>
-                              <p class="mb-0">
-                                Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
-                              </p>
-                            </v-card-text>
-                          </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                          <v-card flat>
-                            <v-card-text>
-                              <p>
-                                Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing
-                                dolor
-                                urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
-                              </p>
-
-                              <p class="mb-0">
-                                Donec venenatis vulputate lorem. Aenean viverra rhoncus pede. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce commodo aliquam arcu. Suspendisse enim turpis, dictum sed, iaculis a, condimentum
-                                nec,
-                                nisi.
-                              </p>
-                            </v-card-text>
-                          </v-card>
-                        </v-tab-item>
-                        <v-tab-item>
-                          <v-card flat>
-                            <v-card-text>
-                              <p>
-                                Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget,
-                                vestibulum et, tempor auctor, justo.
-                              </p>
-
-                              <p class="mb-0">
-                                Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus
-                                interdum sagittis.
-                              </p>
-                            </v-card-text>
-                          </v-card>
-                        </v-tab-item>
-                      </v-tabs>
-                    </v-card>
-
-
                     <!-- Main team-->
                     <v-card class="pa-1" outlined tile>
                       <v-col cols="12" class="d-flex">
                         <v-col cols="6">
-                          <h3 class="pb-3">Team Setting</h3>
+                          <h3 class="pb-3">各曜日に必要な人数</h3>
                           <!-- <h4 class="pb-1">Weekdays</h4> -->
                           <div class="d-flex flex-column">
                             <div class="form_title">NewTeam：</div>
@@ -197,26 +133,6 @@
                             </div>
                           </div>
                         </v-col>
-
-                        <v-col cols="6">
-                          <p>Team Select</p>
-
-                          <v-dialog v-model="dialog" persistent max-width="290">
-                            <template v-slot:activator="{ on }">
-                              <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
-                            </template>
-                            <v-card>
-                              <v-card-title class="headline">Use Google's location service?</v-card-title>
-                              <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
-                              <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <v-btn color="green darken-1" text @click="dialog = false">Disagree</v-btn>
-                                <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
-                              </v-card-actions>
-                            </v-card>
-                          </v-dialog>
-
-                        </v-col>
                       </v-col>
                     </v-card>
                     <!-- /Week Conditions -->
@@ -225,11 +141,13 @@
                   <!-- Members List-->
                   <v-col cols="12">
                     <v-card class="pa-1" outlined tile>
-                      <h4 class="totoList pt-1 pl-2 mb-2">Members</h4>
-                      <ul class="menberLists pa-2">
-                        <li>MemberName/ Skill / Hope Day Job Night</li>
-                        <li>MemberName/ Skill / Hope Day Job Night</li>
-                        <li>MemberName/ Skill / Hope Day Job Night</li>
+                      <h3 class="totoList pt-1 pl-2 mb-2">NGシフト</h3>
+                      <ul class="ngLists pa-2">
+                        <li><input type="checkbox">深夜勤/明け → 深夜勤</li>
+                        <li><input type="checkbox">准夜勤 → 日勤</li>
+                        <li><input type="checkbox">5連勤</li>
+                        <li><input type="checkbox">深夜勤/明け → 准夜勤</li>
+                        <li><input type="checkbox">...</li>
                       </ul>
                     </v-card>
 
@@ -327,15 +245,18 @@ h1,h2,h3,h4
 .v-input.theme--light.v-text-field.v-text-field--single-line.v-text-field--is-booted
   margin: 0
   padding: 0
-.menberLists
+.ngLists
   ul
     padding: 0
   li
     list-style: none
-    border: 1px solid #ccc
-    border-radius: 2px
-    padding: 12px
-    margin-bottom: 12px
+    padding: 8px
+    margin-bottom: 4px
+    display: flex
+    align-items: center
+    input[type="checkbox"]
+      vertical-align: middle
+      margin: -2px 6px 0 0
 .v-application ul, .v-application ol
     padding-left: 0
 
