@@ -63,8 +63,6 @@
                 </v-card>
                 <!-- /Basic Conditions -->
 
-
-
                 <!-- ToDo List -->
                 <v-card class="totoList pa-1 mt-4" outlined tile>
                   <v-col cols="12" class="">
@@ -161,11 +159,80 @@
 
           </v-tab-item>
           <!-- /tab1 -->
+
           <!-- tab2 -->
           <v-tab-item>
-            <v-card flat>
-              <v-card-text>Contents for Item 2 go here</v-card-text>
-            </v-card>
+            <v-row>
+              <!-- Layout-Left  -->
+              <v-col cols="6" class="flex" style="">
+                <!-- <v-card flat> -->
+                  <v-card class="pa-1" outlined tile>
+                  <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
+                  <v-col cols="6" style="">
+                    <h3>メンバーリスト</h3>
+
+                    <div class="teamGroup">
+                      <div class="title_team">Aチーム</div>
+                      <div class="title_class">上級</div>
+                      <ul>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                      </ul>
+                      <div class="title_class">中級</div>
+                      <ul>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                      </ul>
+                      <div class="title_class">初級</div>
+                      <ul>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                      </ul>
+                    </div>
+
+                    <div class="teamGroup">
+                      <div class="title_team">Bチーム</div>
+                      <div class="title_class">上級</div>
+                      <ul>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                      </ul>
+                      <div class="title_class">中級</div>
+                      <ul>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                      </ul>
+                      <div class="title_class">初級</div>
+                      <ul>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                        <li>佐藤真由美</li>
+                      </ul>
+                    </div>
+
+                  </v-col>
+                </v-card>
+              </v-col>
+
+              <v-col cols="6" class="flex" style="">
+                <!-- <v-card flat> -->
+                  <v-card class="pa-1" outlined tile>
+                  <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
+                  <v-col cols="8" style="">
+                    <h3>NGペア</h3>
+                    <v-col cols="12">
+                      <v-select :items="name" label="スタッフ"></v-select>
+                    </v-col>
+                  </v-col>
+                </v-card>
+              </v-col>
+
+            </v-row>
           </v-tab-item>
 
         </v-tabs>
@@ -190,6 +257,7 @@ export default {
     day: 1,
     days_max: '',
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
+    name: ['佐藤真由美', '佐藤真由美','佐藤真由美','佐藤真由美'],
     items: [{
       title: '日勤',
       isChecked: false,
@@ -296,4 +364,19 @@ table.working_type
       width: 8em
     &.time
       width: 6em
+
+.teamGroup
+  padding: 12px
+  .title_team
+    font-size: 24px
+    line-height: 2
+  .title_class
+    font-size: 20px
+    line-height: 2
+  ul
+    li
+      list-style-type: none
+      margin-left: 12px
+      line-height: 1.75
+
 </style>
