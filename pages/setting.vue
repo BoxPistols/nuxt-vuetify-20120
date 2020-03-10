@@ -166,7 +166,7 @@
               <!-- Layout-Left  -->
               <v-col cols="6" class="flex" style="">
                 <!-- <v-card flat> -->
-                  <v-card class="pa-1" outlined tile>
+                <v-card class="pa-1" outlined tile>
                   <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
                   <v-col cols="6" style="">
                     <h3>メンバーリスト</h3>
@@ -221,12 +221,15 @@
 
               <v-col cols="6" class="flex" style="">
                 <!-- <v-card flat> -->
-                  <v-card class="pa-1" outlined tile>
+                <v-card class="pa-1" outlined tile>
                   <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
                   <v-col cols="8" style="">
                     <h3>NGペア</h3>
                     <v-col cols="12">
-                      <v-select :items="name" label="スタッフ"></v-select>
+                      <div class="">
+                        <v-select :items="name" label="スタッフ"></v-select> +
+                        <v-select :items="name" label="スタッフ"></v-select>
+                      </div>
                     </v-col>
                   </v-col>
                 </v-card>
@@ -257,7 +260,7 @@ export default {
     day: 1,
     days_max: '',
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
-    name: ['佐藤真由美', '佐藤真由美','佐藤真由美','佐藤真由美'],
+    name: ['佐藤真由美', '佐藤真由美', '佐藤真由美', '佐藤真由美'],
     items: [{
       title: '日勤',
       isChecked: false,

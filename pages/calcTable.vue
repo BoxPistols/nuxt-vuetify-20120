@@ -1,14 +1,76 @@
 <template>
 <div id="">
+
   <v-tabs class="ml-3" color="teal" slider-color="teal">
 
     <v-tab ripple>%表示</v-tab>
     <v-tab ripple>人数表示</v-tab>
 
+    <v-tab-item>
+      <section class="percentNum">
+
+        <h2>%表示</h2>
+        <p></p>
+        <h3>日勤</h3>
+        <p></p>
+        <h4>上級 + 初級の合計人数</h4>
+        <label><input v-model.number="days" type="number"></label>
+        <br>
+        <br>
+
+        <h3>人数単位</h3>
+        <table>
+          <tr>
+            <th>日勤</th>
+            <th>平日</th>
+            <th>土曜</th>
+            <th>日/祝日</th>
+          </tr>
+
+          <tr>
+            <td>上級</td>
+            <td>
+              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="daysHi" type="number"></label>
+            <td>
+              <label><input v-model.number="daysSat" type="number"></label>
+            </td>
+            <td>
+              <label><input v-model.number="daysSun" type="number"></label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>初級</td>
+            <td>
+              <label><input v-model.number="daysBeginner" type="number"></label>
+            </td>
+            <td>
+              <label><input v-model.number="satBeginner" type="number"></label>
+            </td>
+            <td>
+              <label><input v-model.number="sunBeginner" type="number"></label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>日合計</td>
+            <td>
+              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}
+            <td>
+              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}
+            </td>
+            <td>
+              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}
+            </td>
+          </tr>
+
+        </table>
+      </section>
+    </v-tab-item>
 
     <v-tab-item>
-      <section id="percentNum">
-        <h1>Percent Calc</h1>
+      <section class="percentNum">
 
         <h2>日勤</h2>
         <br>
@@ -66,74 +128,8 @@
           </tr>
 
         </table>
-
-        <br><br>
-        <hr>
-        <br>
-
-        <!-- 割合 -->
-        <h3>割合</h3>
-        <table>
-          <tr>
-            <th>日勤</th>
-            <th>平日</th>
-            <th>土曜</th>
-            <th>日/祝日</th>
-          </tr>
-
-          <tr>
-            <td>上級</td>
-            <td>
-              <!-- <label><input v-model.number="days" type="number"></label> -->
-              <label><input v-model.number="daysHi" type="number"></label>
-            <td>
-              <label><input v-model.number="daysSat" type="number"></label>
-            </td>
-            <td>
-              <label><input v-model.number="daysSun" type="number"></label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>初級</td>
-            <td>
-              <label><input v-model.number="daysBeginner" type="number"></label>
-            </td>
-            <td>
-              <label><input v-model.number="satBeginner" type="number"></label>
-            </td>
-            <td>
-              <label><input v-model.number="sunBeginner" type="number"></label>
-            </td>
-          </tr>
-
-          <tr>
-            <td>日合計</td>
-            <td>
-              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}
-            <td>
-              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}
-            </td>
-            <td>
-              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}
-            </td>
-          </tr>
-
-
-          <!-- <tr>
-        <td></td>
-        <td>{{ people + people2 }}</td>
-        <td>{{ days + days2 + days3 + days4}}</td>
-      </tr> -->
-
-        </table>
-        <!-- <p>Pay of one People</p>
-    <p class="unitPrice">{{ unitPrice }} <span>Yen</span></p>
-    <p class="unitPrice">Add Tax： {{ unitPrice2 }} <span>Yen</span></p> -->
       </section>
     </v-tab-item>
-
-    <v-tab-item></v-tab-item>
 
   </v-tabs>
 </div>
@@ -229,13 +225,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#percentNum {
+h1,h2,h3,h4{
+  font-weight: 400;
+}
+
+.percentNum {
     width: 90%;
-    margin: 20px auto;
+    margin: 0px auto;
     max-width: 500px;
     border: 1px solid #eee;
-    padding: 0 20px 32px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 24px 32px;
+    // box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
