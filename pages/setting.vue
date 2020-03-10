@@ -117,18 +117,24 @@
                           <h3 class="pb-3">各曜日に必要な人数</h3>
                           <!-- <h4 class="pb-1">Weekdays</h4> -->
                           <div class="d-flex flex-column">
-                            <div class="form_title">NewTeam：</div>
+
+                            <h3>日勤</h3>
+
+                            <div class="form_title">上級：</div>
                             <div class="form_field">
                               <v-text-field label="" single-line></v-text-field>
                             </div>
-                            <div class="form_title">Team Name：</div>
+
+                            <div class="form_title">初級：</div>
                             <div class="form_field">
                               <v-text-field label="" single-line></v-text-field>
                             </div>
-                            <div class="form_title">Team Count：</div>
+
+                            <div class="form_title">合計：</div>
                             <div class="form_field">
                               <v-text-field label="" single-line></v-text-field>
                             </div>
+
                           </div>
                         </v-col>
                       </v-col>
@@ -176,20 +182,23 @@
                       <div class="title_class">上級</div>
                       <ul>
                         <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
+                        <li>高橋敏</li>
+                        <li>田中善子</li>
+                        <li>鈴木雅美</li>
                       </ul>
                       <div class="title_class">中級</div>
                       <ul>
                         <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
+                        <li>高橋敏</li>
+                        <li>田中善子</li>
+                        <li>鈴木雅美</li>
                       </ul>
                       <div class="title_class">初級</div>
                       <ul>
                         <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
+                        <li>高橋敏</li>
+                        <li>田中善子</li>
+                        <li>鈴木雅美</li>
                       </ul>
                     </div>
 
@@ -198,20 +207,23 @@
                       <div class="title_class">上級</div>
                       <ul>
                         <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
+                        <li>高橋敏</li>
+                        <li>田中善子</li>
+                        <li>鈴木雅美</li>
                       </ul>
                       <div class="title_class">中級</div>
                       <ul>
                         <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
+                        <li>高橋敏</li>
+                        <li>田中善子</li>
+                        <li>鈴木雅美</li>
                       </ul>
                       <div class="title_class">初級</div>
                       <ul>
                         <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
-                        <li>佐藤真由美</li>
+                        <li>高橋敏</li>
+                        <li>田中善子</li>
+                        <li>鈴木雅美</li>
                       </ul>
                     </div>
 
@@ -223,7 +235,7 @@
                 <!-- <v-card flat> -->
                 <v-card class="pa-1" outlined tile>
                   <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
-                  <v-col cols="8" style="">
+                  <v-col cols="12" style="">
                     <h3>NGペア</h3>
                     <v-col cols="12">
                       <div class="">
@@ -231,7 +243,10 @@
                         <v-select :items="name" label="スタッフ"></v-select>
                       </div>
                     </v-col>
+                    <textarea name="" id="" cols="20" rows="10"></textarea>
                   </v-col>
+                  <button class="add" type="button" name="button">追加</button>
+
                 </v-card>
               </v-col>
 
@@ -260,7 +275,7 @@ export default {
     day: 1,
     days_max: '',
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
-    name: ['佐藤真由美', '佐藤真由美', '佐藤真由美', '佐藤真由美'],
+    name: ['佐藤真由美', '鈴木雅美', '高橋敏', '田中善子'],
     items: [{
       title: '日勤',
       isChecked: false,
@@ -382,4 +397,13 @@ table.working_type
       margin-left: 12px
       line-height: 1.75
 
+textarea
+  border: 1px solid #eee
+  width: 100%
+button.add
+  margin-left: 85%
+  border: 1px solid #ccc
+  padding: 4px 16px
+  border-radius: 4px
+  white-space: nowrap
 </style>

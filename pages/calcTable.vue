@@ -2,9 +2,9 @@
 <div id="">
 
   <v-tabs class="ml-3" color="teal" slider-color="teal">
-
-    <v-tab ripple>%表示</v-tab>
+    
     <v-tab ripple>人数表示</v-tab>
+    <v-tab ripple>%表示</v-tab>
 
     <v-tab-item>
       <section class="percentNum">
@@ -72,9 +72,10 @@
     <v-tab-item>
       <section class="percentNum">
 
-        <h2>日勤</h2>
-        <br>
-
+        <h2>人数表示</h2>
+        <p></p>
+        <h3>日勤</h3>
+        <p></p>
         <h4>上級 + 初級の合計人数</h4>
         <label><input v-model.number="days" type="number"></label>
         <br>
