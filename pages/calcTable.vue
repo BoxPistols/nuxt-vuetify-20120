@@ -2,26 +2,24 @@
 <div id="">
 
   <v-tabs class="ml-3" color="teal" slider-color="teal">
-    
+
     <v-tab ripple>人数表示</v-tab>
-    <v-tab ripple>%表示</v-tab>
+    <v-tab ripple>割合表示</v-tab>
 
     <v-tab-item>
       <section class="percentNum">
-
-        <h2>%表示</h2>
-        <p></p>
-        <h3>日勤</h3>
-        <p></p>
-        <h4>上級 + 初級の合計人数</h4>
+        <h2>人数表示</h2>
+        <p></p><p></p>
+        <h4>スタッフの合計人数（上級 + 中級 + 初級）</h4>
         <label><input v-model.number="days" type="number"></label>
         <br>
         <br>
 
-        <h3>人数単位</h3>
+        <h3>日勤</h3>
+        <p>※休み、中級は省く</p>
         <table>
           <tr>
-            <th>日勤</th>
+            <th></th>
             <th>平日</th>
             <th>土曜</th>
             <th>日/祝日</th>
@@ -31,57 +29,162 @@
             <td>上級</td>
             <td>
               <!-- <label><input v-model.number="days" type="number"></label> -->
-              <label><input v-model.number="daysHi" type="number"></label>
+              <label><input v-model.number="daysHi" type="number">人</label>
             <td>
-              <label><input v-model.number="daysSat" type="number"></label>
+              <label><input v-model.number="daysSat" type="number">人</label>
             </td>
             <td>
-              <label><input v-model.number="daysSun" type="number"></label>
+              <label><input v-model.number="daysSun" type="number">人</label>
             </td>
           </tr>
 
           <tr>
             <td>初級</td>
             <td>
-              <label><input v-model.number="daysBeginner" type="number"></label>
+              <label><input v-model.number="daysBeginner" type="number">人</label>
             </td>
             <td>
-              <label><input v-model.number="satBeginner" type="number"></label>
+              <label><input v-model.number="satBeginner" type="number">人</label>
             </td>
             <td>
-              <label><input v-model.number="sunBeginner" type="number"></label>
+              <label><input v-model.number="sunBeginner" type="number">人</label>
             </td>
           </tr>
 
           <tr>
-            <td>日合計</td>
+            <td>出勤人数</td>
             <td>
-              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}
+              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}人
             <td>
-              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}
+              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}人
             </td>
             <td>
-              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}
+              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}人
             </td>
           </tr>
 
         </table>
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <h3>深夜</h3>
+        <table>
+          <tr>
+            <th></th>
+            <th>平日</th>
+            <th>土曜</th>
+            <th>日/祝日</th>
+          </tr>
+
+          <tr>
+            <td>上級</td>
+            <td>
+              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="daysHi" type="number">人</label>
+            <td>
+              <label><input v-model.number="daysSat" type="number">人</label>
+            </td>
+            <td>
+              <label><input v-model.number="daysSun" type="number">人</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>初級</td>
+            <td>
+              <label><input v-model.number="daysBeginner" type="number">人</label>
+            </td>
+            <td>
+              <label><input v-model.number="satBeginner" type="number">人</label>
+            </td>
+            <td>
+              <label><input v-model.number="sunBeginner" type="number">人</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>出勤人数</td>
+            <td>
+              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}人
+            <td>
+              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}人
+            </td>
+            <td>
+              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}人
+            </td>
+          </tr>
+
+        </table>
+
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <h3>準夜</h3>
+        <table>
+          <tr>
+            <th></th>
+            <th>平日</th>
+            <th>土曜</th>
+            <th>日/祝日</th>
+          </tr>
+
+          <tr>
+            <td>上級</td>
+            <td>
+              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="daysHi" type="number">人</label>
+            <td>
+              <label><input v-model.number="daysSat" type="number">人</label>
+            </td>
+            <td>
+              <label><input v-model.number="daysSun" type="number">人</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>初級</td>
+            <td>
+              <label><input v-model.number="daysBeginner" type="number">人</label>
+            </td>
+            <td>
+              <label><input v-model.number="satBeginner" type="number">人</label>
+            </td>
+            <td>
+              <label><input v-model.number="sunBeginner" type="number">人</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>出勤人数</td>
+            <td>
+              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}人
+            <td>
+              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}人
+            </td>
+            <td>
+              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}人
+            </td>
+          </tr>
+
+        </table>
+
       </section>
     </v-tab-item>
 
     <v-tab-item>
       <section class="percentNum">
 
-        <h2>人数表示</h2>
+        <h2>割合表示</h2>
         <p></p>
-        <h3>日勤</h3>
-        <p></p>
-        <h4>上級 + 初級の合計人数</h4>
+        <h4>スタッフの合計人数</h4>
         <label><input v-model.number="days" type="number"></label>
         <br>
         <br>
 
-        <h3>人数単位</h3>
+        <h3>日勤</h3>
+        <p>※休み、中級は省く</p>
         <table>
           <tr>
             <th>日勤</th>
@@ -94,32 +197,32 @@
             <td>上級</td>
             <td>
               <!-- <label><input v-model.number="days" type="number"></label> -->
-              <label><input v-model.number="daysHi" type="number"></label>
+              <label><input v-model.number="daysHiP" type="number">%</label>
             <td>
-              <label><input v-model.number="daysSat" type="number"></label>
+              <label><input v-model.number="daysSatP" type="number">%</label>
             </td>
             <td>
-              <label><input v-model.number="daysSun" type="number"></label>
+              <label><input v-model.number="daysSunP" type="number">%</label>
             </td>
           </tr>
 
           <tr>
             <td>初級</td>
             <td>
-              <label><input v-model.number="daysBeginner" type="number"></label>
+              <label><input v-model.number="daysBeginner" type="number">%</label>
             </td>
             <td>
-              <label><input v-model.number="satBeginner" type="number"></label>
+              <label><input v-model.number="satBeginner" type="number">%</label>
             </td>
             <td>
-              <label><input v-model.number="sunBeginner" type="number"></label>
+              <label><input v-model.number="sunBeginner" type="number">%</label>
             </td>
           </tr>
 
           <tr>
-            <td>日合計</td>
+            <td>出勤人数</td>
             <td>
-              {{ daysHi + daysBeginner + Math.floor(days * 0.4) }}
+              {{ daysHi + daysBeginner + Math.floor(days * 0.4)}}
             <td>
               {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}
             </td>
@@ -183,24 +286,48 @@ export default {
       return Math.floor(this.days / 100 * 20 / 3)
       // return　30
     },
+    daysHiP: function() {
+      return Math.floor(100 / this.days / 100 * 20 / 3 * 100)
+      // return　30
+    },
     daysSat: function() {
       return Math.floor(this.days / 100 * 30 / 8)
+      // return　30
+    },
+    daysSatP: function() {
+      return Math.floor(100 / this.days / 100 * 30 / 8 * 100)
       // return　30
     },
     daysSun: function() {
       return Math.floor(this.days / 100 * 20 / 6)
       // return　30
     },
+    daysSunP: function() {
+      return Math.floor(100 / this.days / 100 * 20 / 6 * 100)
+      // return　30
+    },
     daysBeginner: function() {
       return Math.floor(this.days / 100 * 40 / 3)
+      // return　30
+    },
+    daysBeginnerP: function() {
+      return Math.floor(100 / this.days / 100 * 40 / 3 * 100)
       // return　30
     },
     satBeginner: function() {
       return Math.floor(this.days / 100 * 50 / 6)
       // return　30
     },
+    satBeginnerP: function() {
+      return Math.floor(100 / this.days / 100 * 50 / 6 * 100)
+      // return　30
+    },
     sunBeginner: function() {
       return Math.floor(this.days / 100 * 50 / 6)
+      // return　30
+    },
+    sunBeginnerP: function() {
+      return Math.floor(100 / this.days / 100 * 50 / 6 * 100)
       // return　30
     },
     unitPrice: function() {
@@ -221,18 +348,23 @@ export default {
         (this.people + this.people2);
       return Math.floor(totalP * 1.1);
     },
+
+    watch: {}
   },
 }
 </script>
 
 <style lang="scss" scoped>
-h1,h2,h3,h4{
-  font-weight: 400;
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 400;
 }
 
 .percentNum {
     width: 90%;
-    margin: 0px auto;
+    margin: 0 auto;
     max-width: 500px;
     border: 1px solid #eee;
     padding: 24px 32px;

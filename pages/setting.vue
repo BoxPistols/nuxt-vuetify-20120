@@ -87,11 +87,11 @@
                       <input type="text" placeholder="終了時間" v-model="newItemJob">-->
                     </div>
 
-                    <ul>
+                    <ul class="todoView">
                       <li v-for="item in items" :key="item.index">
                         <p>
                           <label v-bind:class="{ done: item.isChecked }">
-                            {{ item.title }} ｜ {{ item.selItem }} 〜 {{ item.itemJob }} <input type="checkbox" v-model="item.isChecked">
+                            {{ item.title }}： 勤務時間 {{ item.selItem }} 〜 {{ item.itemJob }} <input type="checkbox" class="selectDelete" v-model="item.isChecked">
                           </label>
                         </p>
                       </li>
@@ -152,6 +152,16 @@
                         <li><input type="checkbox">5連勤</li>
                         <li><input type="checkbox">深夜勤/明け → 准夜勤</li>
                         <li><input type="checkbox">...</li>
+
+                        <!--
+                        1.準夜→日勤
+                   　　　2.日勤→深夜
+                   　　　3.深夜→休→日勤（深夜終了した日の次の日が日勤ということを指している）
+                   　　　4.準深夜→日勤
+                   　　　5.深夜→深夜
+                   　　　6.準深夜→準深夜
+                   　　　7.準夜→準夜
+                 -->
                       </ul>
                     </v-card>
 
@@ -243,7 +253,7 @@
                         <v-select :items="name" label="スタッフ"></v-select>
                       </div>
                     </v-col>
-                    <textarea name="" id="" cols="20" rows="10"></textarea>
+                    <textarea name="" id="" cols="" rows="8" placeholder="NG理由など"></textarea>
                   </v-col>
                   <button class="add" type="button" name="button">追加</button>
 
@@ -381,7 +391,8 @@ table.working_type
     &.works
       width: 8em
     &.time
-      width: 6em
+      padding-left: 12px
+      width: 4em
 
 .teamGroup
   padding: 12px
@@ -400,10 +411,26 @@ table.working_type
 textarea
   border: 1px solid #eee
   width: 100%
+  color: #444
+  padding: 12px
+  font-size: 14px
 button.add
   margin-left: 85%
   border: 1px solid #ccc
   padding: 4px 16px
   border-radius: 4px
   white-space: nowrap
+
+// .selectDelete
+//   vertical-align: middle
+
+// ul.todoView
+//   margin-top: 16px
+//   li
+//     line-height: 1.5
+//     list-style: none
+//     display: flex
+//     width: 100%
+//     margin-left: 12px
+
 </style>
