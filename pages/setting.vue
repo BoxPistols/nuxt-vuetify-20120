@@ -280,7 +280,7 @@ export default {
     modal: false,
     dialog: false,
     // getDay
-    year: [2018, 2019, 2020, 2021, 2022],
+    year: [2022, 2021, 2020, 2019, 2018],
     month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     day: 1,
     days_max: '',
