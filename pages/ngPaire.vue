@@ -249,6 +249,8 @@ h1,h2,h3,h4
   font-weight: 400
 h2
   font-size: 2em
+  border-bottom: 1px solid #ccc
+  padding: 24px 0 12px
 h3
   font-size: 1.5em
 
@@ -288,9 +290,11 @@ h3
   background: rgba(167, 203, 213, 0.1)
   padding: 4px 24px 0px 4px
   margin: 0 12px 0 32px
+  border: 1px solid #cee7ef
+  border-radius: 8px
 
 textarea
-  border: 2px solid #ccc
+  border: 1px solid #abc
   width: 100%
   color: #444
   padding: 4px 12px
