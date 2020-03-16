@@ -72,13 +72,17 @@
                       <table class="working_type">
                         <tbody>
                           <th>勤務種類</th>
-                          <th></th>
-                          <th></th>
+                          <th>開始時間</th>
+                          <th>終了時間</th>
                           <tr>
                             <td><input class="works" type="text" placeholder="日勤" v-model="newItemTitle"></td>
                             <!-- <td><input class="time start" type="text" placeholder="0800" v-model="newItemSelect"> 〜</td> -->
-                            <td><v-select class="time start"　:items="workTime" label="開始時間"></v-select></td>
-                            <td><v-select class="time end"　:items="workMinit" label="終了時間"></v-select></td>
+                           <td><v-select class="time start" :items="workTime" label="時間"></v-select></td>
+                            <td><v-select class="time end" :items="workMinit" label="分"></v-select></td>
+
+                            <td><v-select class="time start" :items="workTime" label="時間"></v-select></td>
+                            <td><v-select class="time end" :items="workMinit" label="分"></v-select></td>
+
                             <!-- <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td> -->
                             <!-- <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td> -->
                             <td> <button class="time push" type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button></td>
@@ -385,8 +389,6 @@
 <script>
 export default {
   data: () => ({
-
-
   e1: [],
   e2: [],
   e3: [],
@@ -434,8 +436,8 @@ export default {
     days_max: '',
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
     name: ['佐藤真由美', '鈴木雅美', '高橋敏', '田中善子'],
-    workTime:["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
-    workMinit:["00","15","45"],
+    workTime:['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
+    workMinit:['00','15','30','45'],
     items: [{
       title: '日勤',
       isChecked: false,
