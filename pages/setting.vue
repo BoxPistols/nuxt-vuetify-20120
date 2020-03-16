@@ -30,7 +30,7 @@
           <v-tab-item>
             <v-row>
               <!-- Layout-Left  -->
-              <v-col cols="6" style="">
+              <v-col cols="7" style="">
                 <!-- Basic Conditions -->
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12">
@@ -71,34 +71,28 @@
                       <!-- v-on:keyup.enter="addTodo(newItemTitle) -->
                       <table class="working_type">
                         <tbody>
-                          <th>勤務種類</th>
-                          <th>開始時間</th>
-                          <th>終了時間</th>
+                          <th class="accent">勤務種類</th>
+                          <th class="accent" colspan="2">開始時間</th>
+                          <th>&nbsp;ー&nbsp;</th>
+                          <th class="accent" colspan="2">終了時間</th>
                           <tr>
-                            <td><input class="works" type="text" placeholder="日勤" v-model="newItemTitle"></td>
-                            <!-- <td><input class="time start" type="text" placeholder="0800" v-model="newItemSelect"> 〜</td> -->
-                           <td><v-select class="time start" :items="workTime" label="時間"></v-select></td>
-                            <td><v-select class="time end" :items="workMinit" label="分"></v-select></td>
-
-                            <td><v-select class="time start" :items="workTime" label="時間"></v-select></td>
-                            <td><v-select class="time end" :items="workMinit" label="分"></v-select></td>
-
-                            <!-- <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td> -->
-                            <!-- <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td> -->
-                            <td> <button class="time push" type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button></td>
+                            <td><input class="works" type="text" placeholder="勤務種類" v-model="newItemTitle"></td>
+                            <td><v-select class="time start hour" :items="workTime" label="時間" placeholder="00" v-model="createJobStartHour"></v-select></td>
+                            <td><v-select class="time stert minute" :items="workMinit" label="分" placeholder="00" v-model="createJobStartMinute"></v-select></td>
+                            <td>&nbsp;ー&nbsp;</td>                            
+                            <td><v-select class="time end hour" :items="workTime" label="時間" placeholder="00" v-model="createJobEndtHour"></v-select></td>
+                            <td><v-select class="time end minute" :items="workMinit" label="分" placeholder="00" v-model="createJobEndMinute"></v-select></td>
+                            <td> <button class="time push" type="button" name="button" v-on:click="addTodo(newItemTitle, createJobStartHour, createJobStartMinute, createJobEndtHour, createJobEndMinute)">作成</button></td>
                           </tr>
                         </tbody>
                       </table>
-                      <!-- <input type="text" placeholder="勤務種類" v-model="newItemTitle">
-                      <input type="text" placeholder="開始時間" v-model="newItemSelect">
-                      <input type="text" placeholder="終了時間" v-model="newItemJob">-->
                     </div>
 
                     <ul class="todoView">
                       <li v-for="item in items" :key="item.index">
                         <p>
                           <label v-bind:class="{ done: item.isChecked }">
-                            {{ item.title }}： 勤務時間 {{ item.selItem }} 〜 {{ item.itemJob }} <input type="checkbox" class="selectDelete" v-model="item.isChecked">
+                            {{ item.title }}： {{ item.setJobStartHour }}:{{ item.setJobStartMinute }} 〜 {{ item.setJobEndHour }}:{{ item.setJobEndMinute }} <input type="checkbox" class="selectDelete" v-model="item.isChecked">
                           </label>
                         </p>
                       </li>
@@ -112,7 +106,7 @@
               <!-- /Layout-Left  -->
 
               <!-- Main -->
-              <v-col cols="6">
+              <v-col cols="5">
 
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12">
@@ -122,7 +116,6 @@
                       <v-col cols="12" class="d-flex">
                         <v-col cols="6">
                           <h3 class="pb-3">各曜日に必要な人数</h3>
-                          <!-- <h4 class="pb-1">Weekdays</h4> -->
                           <div class="d-flex flex-column">
 
                             <h3>日勤</h3>
@@ -193,8 +186,6 @@
                   <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
                   <v-col cols="12" style="">
                     <h3>メンバーリスト</h3>
-
-
 
                     <v-container fluid="">
                       <h2>チーム名：2A</h2>
@@ -441,32 +432,42 @@ export default {
     items: [{
       title: '日勤',
       isChecked: false,
-      selItem: "0800",
-      itemJob: "1800"
+      setJobStartHour: '08',
+      setJobStartMinute: '30',
+      setJobEndHour: '18',
+      setJobEndMinute: '30',
     }, ],
-    newItemTitle: '日勤',
-    newItemSelect: '0800',
-    newItemJob: '1800',
+    newItemTitle: '',
+    // newItemSelect: '00',
+    createJobStartHour: '00',
+    createJobStartMinute: '00',
+    createJobEndtHour: '00',
+    createJobEndMinute: '00',
+    // newItemJob: '00',
     active: false,
   }),
   created: function() {
     this.get_days();
   },
-  methods: { //methodsオプションをまるっと追加zz
-    addTodo: function(newItemTitle, newItemSelect, newItemJob) {
+  methods: { //methodsオプションをまるっと追加
+    addTodo: function(newItemTitle, createJobStartHour, createJobStartMinute, createJobEndtHour, createJobEndMinute) {
       if (this.newItemTitle.length < 1) {
         return false
       } else {
         this.items.push({
           title: newItemTitle,
-          selItem: newItemSelect,
-          itemJob: newItemJob,
+          setJobStartHour: createJobStartHour,
+          setJobStartMinute: createJobStartMinute,
+          setJobEndHour: createJobEndtHour,
+          setJobEndMinute: createJobEndMinute,
           isChecked: false,
         });
       }
       this.newItemTitle = '日勤'
-      this.newItemSelect = '0800'
-      this.newItemJob = '1800'
+      this.createJobStartHour = '00'
+      this.createJobStartMinute = '00'
+      this.createJobEndtHour = '00'
+      this.createJobEndMinute = '00'
     },
     deleteTodo: function() {
       this.items = this.items.filter(function(item) {
@@ -542,15 +543,16 @@ table.working_type
   th
     text-align: left
     font-weight: normal
-    padding-left: 4px
     font-size: 13px
     color: gray
-    margin: 0
-    line-height: 0
+    white-space: nowrap
+    &.accent
+      text-align: center
+      color: white
   input
     &.works
-      width: 8em
-      margin: 0 1em
+      width: 7em
+      margin: 0 .2em 0 0
   select
     &.time
       padding-left: 12px
