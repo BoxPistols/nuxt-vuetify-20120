@@ -1,13 +1,98 @@
 <template>
 <div id="">
-
-  <v-tabs class="ml-3" color="teal" slider-color="teal">
+  <!-- <v-tabs class="ml-3" color="teal" slider-color="teal">
 
     <v-tab ripple>人数表示</v-tab>
     <v-tab ripple>割合表示</v-tab>
 
     <v-tab-item>
+      <section class="percentNum"> -->
+
+  <div class="wrapper">
+    <button @click='toggle("one")'>Section 人</button>
+    <button @click='toggle("two")'>Section ％</button><br><br>
+
+    <div class="section active" data-section='one'>
+
+
+
+
       <section class="percentNum">
+
+        <h2>割合表示</h2>
+
+        <h3>日勤</h3>
+
+        <table>
+          <tr>
+            <th>日勤</th>
+            <th>平日</th>
+            <th>土曜</th>
+            <th>日/祝日</th>
+          </tr>
+
+          <tr>
+            <td>上級</td>
+            <td>
+              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="daysHiP" type="number">%</label>
+            <td>
+              <label><input v-model.number="daysSatP" type="number">%</label>
+            </td>
+            <td>
+              <label><input v-model.number="daysSunP" type="number">%</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>初級</td>
+            <td>
+              <label><input v-model.number="daysBeginner" type="number">%</label>
+            </td>
+            <td>
+              <label><input v-model.number="satBeginner" type="number">%</label>
+            </td>
+            <td>
+              <label><input v-model.number="sunBeginner" type="number">%</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>出勤人数</td>
+            <td>
+              {{ daysHi + daysBeginner + Math.floor(days * 0.4)}}
+            <td>
+              {{ daysSat + satBeginner  + Math.floor(days * 0.4) }}
+            </td>
+            <td>
+              {{ daysSun + sunBeginner  + Math.floor(days * 0.4) }}
+            </td>
+          </tr>
+
+        </table>
+      </section>
+
+
+    </div>
+
+    <div class="section" data-section='two'>
+      <p>This is SECTION %</p>
+      <table>
+        <tbody>
+          <th>A</th>
+          <th>B</th>
+          <th>c</th>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <!--
         <h2>人数表示</h2>
         <p></p><p></p>
         <h4>スタッフの合計人数（上級 + 中級 + 初級）</h4>
@@ -28,7 +113,7 @@
           <tr>
             <td>上級</td>
             <td>
-              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="days" type="number"></label>
               <label><input v-model.number="daysHi" type="number">人</label>
             <td>
               <label><input v-model.number="daysSat" type="number">人</label>
@@ -80,7 +165,7 @@
           <tr>
             <td>上級</td>
             <td>
-              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="days" type="number"></label>
               <label><input v-model.number="daysHi" type="number">人</label>
             <td>
               <label><input v-model.number="daysSat" type="number">人</label>
@@ -133,7 +218,7 @@
           <tr>
             <td>上級</td>
             <td>
-              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="days" type="number"></label>
               <label><input v-model.number="daysHi" type="number">人</label>
             <td>
               <label><input v-model.number="daysSat" type="number">人</label>
@@ -170,11 +255,11 @@
 
         </table>
 
-      </section>
-    </v-tab-item>
+      </section> -->
+  <!-- </v-tab-item> -->
 
-    <v-tab-item>
-      <section class="percentNum">
+  <!-- <v-tab-item> -->
+  <!-- <section class="percentNum">
 
         <h2>割合表示</h2>
         <p></p>
@@ -196,7 +281,7 @@
           <tr>
             <td>上級</td>
             <td>
-              <!-- <label><input v-model.number="days" type="number"></label> -->
+              <label><input v-model.number="days" type="number"></label>
               <label><input v-model.number="daysHiP" type="number">%</label>
             <td>
               <label><input v-model.number="daysSatP" type="number">%</label>
@@ -232,10 +317,10 @@
           </tr>
 
         </table>
-      </section>
-    </v-tab-item>
+      </section> -->
+  <!-- </v-tab-item>
 
-  </v-tabs>
+  </v-tabs> -->
 </div>
 </template>
 
@@ -243,6 +328,7 @@
 export default {
   name: "",
   data: () => ({
+    show: true,
     days: 30,
     days2: 20,
     // daysSat: null,
@@ -277,6 +363,25 @@ export default {
       }
     ],
   }),
+  methods: {
+    toggleShow() {
+      this.show = !this.show;
+    },
+
+    toggle: function(who) {
+      this.show = false;
+      document.querySelector(`[data-section="${who}"]`).classList.add("active");
+
+      const hideSections = document.querySelectorAll(
+        `[data-section]:not([data-section="${who}"])`
+      );
+
+      for (let i = 0; i < hideSections.length; i++) {
+        hideSections[i].classList.remove("active");
+      }
+    },
+
+  },
   computed: {
     totals: function() {},
     /*
@@ -430,5 +535,33 @@ table {
             /* padding: 24px; */
         }
     }
+}
+
+.wrapper {
+    margin: 0 auto;
+    display: block;
+    width: 60%;
+    position: relative;
+}
+.wrapper .section {
+    opacity: 0;
+    padding: 10px;
+    transition: all 0.5s linear;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: #eee;
+    transform: scale(0);
+}
+.wrapper .section.active {
+    opacity: 1;
+    transform: scale(1);
+    font-weight: bold;
+}
+
+button {
+    clear: both;
 }
 </style>

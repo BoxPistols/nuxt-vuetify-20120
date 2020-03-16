@@ -248,11 +248,12 @@ export default {
 h1,h2,h3,h4
   font-weight: 400
 h2
-  font-size: 2em
+  font-size: 1.5em
   border-bottom: 1px solid #ccc
   padding: 24px 0 12px
 h3
-  font-size: 1.5em
+  font-size: 1.4em
+  padding: 24px 0 12px
 
 .wrap
   max-width: 1600px
@@ -287,7 +288,7 @@ h3
       line-height: 1.75
 
 .manberInfo
-  background: rgba(167, 203, 213, 0.1)
+  background: rgba(167, 203, 213, 0.05)
   padding: 4px 24px 0px 4px
   margin: 0 12px 0 32px
   border: 1px solid #cee7ef

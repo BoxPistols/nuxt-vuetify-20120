@@ -313,7 +313,7 @@ h1,h2,h3,h4
     border-radius: 4px
     padding: 4px 8px
   select
-   height: 32px
+    height: 32px
 table.working_type
   margin-top: 16px
   th
