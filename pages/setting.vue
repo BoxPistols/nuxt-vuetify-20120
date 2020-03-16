@@ -190,6 +190,105 @@
                   <v-col cols="12" style="">
                     <h3>メンバーリスト</h3>
 
+
+
+                    <v-container fluid="">
+                      <h2>チーム名：2A</h2>
+                      <h3>上級</h3>
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e1" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    <v-container fluid="">
+                      <h3>中級</h3>
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'香川芳江'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e2" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    <v-container fluid="">
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'吉岡万由子'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e3" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    <v-container fluid="">
+                      <h3>初級</h3>
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e4" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    <v-container fluid="">
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e5" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    <v-container fluid="">
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e6" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                    <v-container fluid="">
+                      <v-row align="center">
+                        <v-col cols="12" sm="4">
+                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <v-select v-model="e7" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="4">
+                          <textarea placeholder="個人ノート"></textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+
+
                     <div class="teamGroup">
                       <div class="title_team">Aチーム</div>
                       <div class="title_class">上級</div>
@@ -286,6 +385,44 @@
 <script>
 export default {
   data: () => ({
+
+
+  e1: [],
+  e2: [],
+  e3: [],
+  e4: [],
+  e5: [],
+  e6: [],
+  e7: [],
+  states: [
+    "吉岡万由子",
+    "香川芳江",
+    "佐藤真由美",
+    "神田八重子",
+    "長野葉子",
+    "伊集院小枝子",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Palau",
+    "Pennsylvania",
+    "Puerto Rico",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virgin Island",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming"
+  ],
+
+
     date: new Date().toISOString().substr(0, 7),
     menu: false,
     modal: false,
