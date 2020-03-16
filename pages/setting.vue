@@ -178,194 +178,7 @@
 
           <!-- tab2 -->
           <v-tab-item>
-            <v-row>
-              <!-- Layout-Left  -->
-              <v-col cols="12" class="flex" style="">
-                <!-- <v-card flat> -->
-                <v-card class="pa-1" outlined tile>
-                  <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
-                  <v-col cols="12" style="">
-                    <h3>メンバーリスト</h3>
-
-                    <v-container fluid="">
-                      <h2>チーム名：2A</h2>
-                      <h3>上級</h3>
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e1" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <v-container fluid="">
-                      <h3>中級</h3>
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'香川芳江'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e2" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <v-container fluid="">
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'吉岡万由子'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e3" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <v-container fluid="">
-                      <h3>初級</h3>
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e4" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <v-container fluid="">
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e5" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <v-container fluid="">
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e6" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <v-container fluid="">
-                      <v-row align="center">
-                        <v-col cols="12" sm="4">
-                          <v-subheader v-text="'佐藤真由美'"></v-subheader>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <v-select v-model="e7" :items="states" :menu-props="{ maxHeight: '400' }" label="ペア選択" multiple="" hint="NG選択" persistent-hint=""></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="4">
-                          <textarea placeholder="個人ノート"></textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-
-
-                    <div class="teamGroup">
-                      <div class="title_team">Aチーム</div>
-                      <div class="title_class">上級</div>
-                      <ul>
-                        <li class="ngBox">
-                          <p>佐藤真由美</p>
-                          <div class="flex">
-                            <v-select :items="name" label="スタッフ"></v-select> +
-                            <v-select :items="name" label="スタッフ"></v-select>
-                            <textarea name="" id="" cols="" rows="8" placeholder="NG理由など"></textarea>
-                          </div>
-
-                        </li>
-                        <li>高橋敏</li>
-                        <li>田中善子</li>
-                        <li>鈴木雅美</li>
-                      </ul>
-                      <div class="title_class">中級</div>
-                      <ul>
-                        <li>佐藤真由美</li>
-                        <li>高橋敏</li>
-                        <li>田中善子</li>
-                        <li>鈴木雅美</li>
-                      </ul>
-                      <div class="title_class">初級</div>
-                      <ul>
-                        <li>佐藤真由美</li>
-                        <li>高橋敏</li>
-                        <li>田中善子</li>
-                        <li>鈴木雅美</li>
-                      </ul>
-                    </div>
-
-                    <div class="teamGroup">
-                      <div class="title_team">Bチーム</div>
-                      <div class="title_class">上級</div>
-                      <ul>
-                        <li>佐藤真由美</li>
-                        <li>高橋敏</li>
-                        <li>田中善子</li>
-                        <li>鈴木雅美</li>
-                      </ul>
-                      <div class="title_class">中級</div>
-                      <ul>
-                        <li>佐藤真由美</li>
-                        <li>高橋敏</li>
-                        <li>田中善子</li>
-                        <li>鈴木雅美</li>
-                      </ul>
-                      <div class="title_class">初級</div>
-                      <ul>
-                        <li>佐藤真由美</li>
-                        <li>高橋敏</li>
-                        <li>田中善子</li>
-                        <li>鈴木雅美</li>
-                      </ul>
-                    </div>
-
-                  </v-col>
-                </v-card>
-              </v-col>
-
-              <!-- <v-col cols="6" class="flex" style="">
-
-                <v-card class="pa-1" outlined tile>
-
-                  <v-col cols="12" style="">
-                    <h3>NGペア</h3>
-                    <v-col cols="12">
-                      <div class="">
-                        <v-select :items="name" label="スタッフ"></v-select> +
-                        <v-select :items="name" label="スタッフ"></v-select>
-                      </div>
-                    </v-col>
-                    <textarea name="" id="" cols="" rows="8" placeholder="NG理由など"></textarea>
-                  </v-col>
-                  <button class="add" type="button" name="button">追加</button>
-
-                </v-card>
-              </v-col> -->
-
-            </v-row>
+            <NGPaire/>
           </v-tab-item>
 
         </v-tabs>
@@ -378,55 +191,23 @@
 </template>
 
 <script>
+import NGPaire from './ngPaire.vue'
+
 export default {
+  components:{
+    NGPaire
+  },
   data: () => ({
-  e1: [],
-  e2: [],
-  e3: [],
-  e4: [],
-  e5: [],
-  e6: [],
-  e7: [],
-  states: [
-    "吉岡万由子",
-    "香川芳江",
-    "佐藤真由美",
-    "神田八重子",
-    "長野葉子",
-    "伊集院小枝子",
-    "Ohio",
-    "Oklahoma",
-    "Oregon",
-    "Palau",
-    "Pennsylvania",
-    "Puerto Rico",
-    "Rhode Island",
-    "South Carolina",
-    "South Dakota",
-    "Tennessee",
-    "Texas",
-    "Utah",
-    "Vermont",
-    "Virgin Island",
-    "Virginia",
-    "Washington",
-    "West Virginia",
-    "Wisconsin",
-    "Wyoming"
-  ],
-
-
     date: new Date().toISOString().substr(0, 7),
     menu: false,
     modal: false,
     dialog: false,
+    teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
     // getDay
     year: [2022, 2021, 2020, 2019, 2018],
     month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     day: 1,
     days_max: '',
-    teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
-    name: ['佐藤真由美', '鈴木雅美', '高橋敏', '田中善子'],
     workTime:['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
     workMinit:['00','15','30','45'],
     items: [{
@@ -499,18 +280,6 @@ h1,h2,h3,h4
 .v-input.theme--light.v-text-field.v-text-field--single-line.v-text-field--is-booted
   margin: 0
   padding: 0
-.ngLists
-  ul
-    padding: 0
-  li
-    list-style: none
-    padding: 8px
-    margin-bottom: 4px
-    display: flex
-    align-items: center
-    input[type="checkbox"]
-      vertical-align: middle
-      margin: -2px 6px 0 0
 .v-application ul, .v-application ol
     padding-left: 0
 
@@ -562,46 +331,25 @@ table.working_type
     white-space: nowrap
     padding: 4px 24px
 
-
-.teamGroup
-  padding: 12px
-  .title_team
-    font-size: 24px
-    line-height: 2
-  .title_class
-    font-size: 20px
-    line-height: 2
+.ngLists
   ul
-    li
-      list-style-type: none
-      margin-left: 12px
-      line-height: 1.75
+    padding: 0
+  li
+    list-style: none
+    padding: 8px
+    margin-bottom: 4px
+    display: flex
+    align-items: center
+    input[type="checkbox"]
+      vertical-align: middle
+      margin: -2px 6px 0 0
 
-textarea
-  border: 1px solid #eee
-  width: 100%
-  max-width: 180px
-  color: #444
-  padding: 12px
-  font-size: 14px
 button.add
   margin-left: 85%
   border: 1px solid #ccc
   padding: 4px 16px
   border-radius: 4px
   white-space: nowrap
-
-// .selectDelete
-//   vertical-align: middle
-
-// ul.todoView
-//   margin-top: 16px
-//   li
-//     line-height: 1.5
-//     list-style: none
-//     display: flex
-//     width: 100%
-//     margin-left: 12px
 
 .v-text-field fieldset,
 .v-text-field .v-input__control
