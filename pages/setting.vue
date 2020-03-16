@@ -91,7 +91,7 @@
                     <ul class="todoView">
                       <li v-for="item in items" :key="item.index">
                         <p>
-                          <label v-bind:class="{ done: item.isChecked }">
+                          <label class="createJobList" v-bind:class="{ done: item.isChecked }">
                             {{ item.title }}： {{ item.setJobStartHour }}:{{ item.setJobStartMinute }} 〜 {{ item.setJobEndHour }}:{{ item.setJobEndMinute }} <input type="checkbox" class="selectDelete" v-model="item.isChecked">
                           </label>
                         </p>
@@ -306,7 +306,6 @@ h1,h2,h3,h4
     padding: 4px 8px
   select
    height: 32px
-
 table.working_type
   margin-top: 16px
   th
@@ -317,7 +316,10 @@ table.working_type
     white-space: nowrap
     &.accent
       text-align: center
+      padding: 8px
+      background: #234!important
       color: white
+      letter-spacing: 2px
   input
     &.works
       width: 7em
@@ -330,6 +332,11 @@ table.working_type
     margin: 0 0 0 12px
     white-space: nowrap
     padding: 4px 24px
+
+label.createJobList
+  font-size: 1.2em
+  display: flex
+  align-items: center
 
 .ngLists
   ul
