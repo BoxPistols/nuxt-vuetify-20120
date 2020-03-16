@@ -8,165 +8,204 @@
       <div class='memberArea'>
         <!-- <h3>メンバーリスト</h3> -->
         <v-container fluid=''>
-          <h2 class="mt-4 mb-4">チーム名：{{ teams[3] }}</h2>
+          <h2 class="mt-4 mb-4">チーム：{{ teams[3] }}</h2>
           <h3>上級</h3>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"佐藤真由美"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e1' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e1' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
         <v-container fluid=''>
           <h3>中級</h3>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"香川芳江"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e2' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e2' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
         <v-container fluid=''>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"吉岡万由子"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e3' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e3' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
         <v-container fluid=''>
           <h3>初級</h3>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"佐藤真由美"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e4' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e4' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
         <v-container fluid=''>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"佐藤真由美"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e5' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e5' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
         <v-container fluid=''>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"佐藤真由美"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e6' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e6' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
         <v-container fluid=''>
-          <v-row align='center'>
+          <v-row align='center' class="manberInfo">
             <v-col cols='12' sm='3'>
               <v-subheader v-text='"佐藤真由美"'></v-subheader>
             </v-col>
             <v-col cols='12' sm='3'>
-              <v-select v-model='e7' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア選択' multiple='' hint='' persistent-hint=''></v-select>
+              <v-select v-model='e7' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
             </v-col>
-            <v-col cols='12' sm='3'>
+            <v-col cols='12' sm='6'>
               <textarea placeholder='個人ノート'></textarea>
             </v-col>
           </v-row>
         </v-container>
 
-        <div class='teamGroup'>
-          <div class='title_team'>Aチーム</div>
-          <div class='title_class'>上級</div>
-          <ul>
-            <li class='ngBox'>
-              <p>佐藤真由美</p>
-              <div class='flex'>
-                <v-select :items='name' label='スタッフ'></v-select>
-                +
-                <v-select :items='name' label='スタッフ'></v-select>
-                <textarea name='' id='' cols='' rows='8' placeholder='NG理由など'></textarea>
-              </div>
-
-            </li>
-            <li>高橋敏</li>
-            <li>田中善子</li>
-            <li>鈴木雅美</li>
-          </ul>
-          <div class='title_class'>中級</div>
-          <ul>
-            <li>佐藤真由美</li>
-            <li>高橋敏</li>
-            <li>田中善子</li>
-            <li>鈴木雅美</li>
-          </ul>
-          <div class='title_class'>初級</div>
-          <ul>
-            <li>佐藤真由美</li>
-            <li>高橋敏</li>
-            <li>田中善子</li>
-            <li>鈴木雅美</li>
-          </ul>
-        </div>
-
-        <div class='teamGroup'>
-          <div class='title_team'>Bチーム</div>
-          <div class='title_class'>上級</div>
-          <ul>
-            <li>佐藤真由美</li>
-            <li>高橋敏</li>
-            <li>田中善子</li>
-            <li>鈴木雅美</li>
-          </ul>
-          <div class='title_class'>中級</div>
-          <ul>
-            <li>佐藤真由美</li>
-            <li>高橋敏</li>
-            <li>田中善子</li>
-            <li>鈴木雅美</li>
-          </ul>
-          <div class='title_class'>初級</div>
-          <ul>
-            <li>佐藤真由美</li>
-            <li>高橋敏</li>
-            <li>田中善子</li>
-            <li>鈴木雅美</li>
-          </ul>
-        </div>
+      </div>
+      <!--  -->
+      <div class='memberArea'>
+        <!-- <h3>メンバーリスト</h3> -->
+        <v-container fluid=''>
+          <h2 class="mt-4 mb-4">チーム：{{ teams[4] }}</h2>
+          <h3>上級</h3>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"佐藤真由美"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e1' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid=''>
+          <h3>中級</h3>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"香川芳江"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e2' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid=''>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"吉岡万由子"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e3' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid=''>
+          <h3>初級</h3>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"佐藤真由美"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e4' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid=''>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"佐藤真由美"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e5' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid=''>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"佐藤真由美"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e6' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid=''>
+          <v-row align='center' class="manberInfo">
+            <v-col cols='12' sm='3'>
+              <v-subheader v-text='"佐藤真由美"'></v-subheader>
+            </v-col>
+            <v-col cols='12' sm='3'>
+              <v-select v-model='e7' :items='states' :menu-props='{ maxHeight: "400" }' label='NGペア' multiple='' hint='' persistent-hint=''></v-select>
+            </v-col>
+            <v-col cols='12' sm='6'>
+              <textarea placeholder='個人ノート'></textarea>
+            </v-col>
+          </v-row>
+        </v-container>
 
       </div>
 
     </v-card>
-
-
   </v-col>
 
 </v-row>
@@ -189,28 +228,12 @@ export default {
       "神田八重子",
       "長野葉子",
       "伊集院小枝子",
-      "Ohio",
-      "Oklahoma",
-      "Oregon",
-      "Palau",
-      "Pennsylvania",
-      "Puerto Rico",
-      "Rhode Island",
-      "South Carolina",
-      "South Dakota",
-      "Tennessee",
-      "Texas",
-      "Utah",
-      "Vermont",
-      "Virgin Island",
-      "Virginia",
-      "Washington",
-      "West Virginia",
-      "Wisconsin",
-      "Wyoming"
+      "高橋敏",
+      "鈴木雅美",
+      "田中善子"
     ],
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
-    name: ['佐藤真由美', '鈴木雅美', '高橋敏', '田中善子'],
+    name: ['佐藤真由美', '鈴木雅美', '高橋敏', '田中善子', '伊集院小枝子', '神田八重子'],
     items: '',
   }),
 }
@@ -224,6 +247,10 @@ export default {
 
 h1,h2,h3,h4
   font-weight: 400
+h2
+  font-size: 2em
+h3
+  font-size: 1.5em
 
 .wrap
   max-width: 1600px
@@ -231,7 +258,7 @@ h1,h2,h3,h4
   width: 100%
 
 .v-subheader
-  font-size: 1.2em
+  font-size: 1.15em
   text-align: center
 
 .form_title
@@ -257,13 +284,17 @@ h1,h2,h3,h4
       margin-left: 12px
       line-height: 1.75
 
+.manberInfo
+  background: rgba(167, 203, 213, 0.1)
+  padding: 4px 24px 0px 4px
+  margin: 0 12px 0 32px
+
 textarea
   border: 2px solid #ccc
   width: 100%
-  max-width: 320px
   color: #444
   padding: 4px 12px
-  margin-left: 12px
+  margin: 0 12px
   font-size: 14px
   min-height: 80px
   min-width: 320px
