@@ -77,11 +77,19 @@
                           <th class="accent" colspan="2">終了時間</th>
                           <tr>
                             <td><input class="works" type="text" placeholder="勤務種類" v-model="newItemTitle"></td>
-                            <td><v-select class="time start hour" :items="workTime" label="時間" placeholder="00" v-model="createJobStartHour"></v-select></td>
-                            <td><v-select class="time stert minute" :items="workMinit" label="分" placeholder="00" v-model="createJobStartMinute"></v-select></td>
-                            <td>&nbsp;ー&nbsp;</td>                            
-                            <td><v-select class="time end hour" :items="workTime" label="時間" placeholder="00" v-model="createJobEndtHour"></v-select></td>
-                            <td><v-select class="time end minute" :items="workMinit" label="分" placeholder="00" v-model="createJobEndMinute"></v-select></td>
+                            <td>
+                              <v-select class="time start hour" :items="workTime" label="時間" placeholder="00" v-model="createJobStartHour"></v-select>
+                            </td>
+                            <td>
+                              <v-select class="time stert minute" :items="workMinit" label="分" placeholder="00" v-model="createJobStartMinute"></v-select>
+                            </td>
+                            <td>&nbsp;ー&nbsp;</td>
+                            <td>
+                              <v-select class="time end hour" :items="workTime" label="時間" placeholder="00" v-model="createJobEndtHour"></v-select>
+                            </td>
+                            <td>
+                              <v-select class="time end minute" :items="workMinit" label="分" placeholder="00" v-model="createJobEndMinute"></v-select>
+                            </td>
                             <td> <button class="time push" type="button" name="button" v-on:click="addTodo(newItemTitle, createJobStartHour, createJobStartMinute, createJobEndtHour, createJobEndMinute)">作成</button></td>
                           </tr>
                         </tbody>
@@ -92,7 +100,7 @@
                       <li v-for="item in items" :key="item.index">
                         <p>
                           <label class="createJobList" v-bind:class="{ done: item.isChecked }">
-                            {{ item.title }}： {{ item.setJobStartHour }}:{{ item.setJobStartMinute }} - {{ item.setJobEndHour }}:{{ item.setJobEndMinute }}  &nbsp;<input type="checkbox" class="selectDelete" v-model="item.isChecked">
+                            {{ item.title }}： {{ item.setJobStartHour }}:{{ item.setJobStartMinute }} - {{ item.setJobEndHour }}:{{ item.setJobEndMinute }} &nbsp;<input type="checkbox" class="selectDelete" v-model="item.isChecked">
                           </label>
                         </p>
                       </li>
@@ -178,7 +186,7 @@
 
           <!-- tab2 -->
           <v-tab-item>
-            <NGPaire/>
+            <NGPaire />
           </v-tab-item>
 
         </v-tabs>
@@ -194,7 +202,7 @@
 import NGPaire from './ngPaire.vue'
 
 export default {
-  components:{
+  components: {
     NGPaire
   },
   data: () => ({
@@ -208,8 +216,8 @@ export default {
     month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     day: 1,
     days_max: '',
-    workTime:['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'],
-    workMinit:['00','15','30','45'],
+    workTime: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+    workMinit: ['00', '15', '30', '45'],
     items: [{
       title: '日勤',
       isChecked: false,
