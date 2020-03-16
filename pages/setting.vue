@@ -72,13 +72,16 @@
                       <table class="working_type">
                         <tbody>
                           <th>勤務種類</th>
-                          <th>開始時間</th>
-                          <th>終了時間</th>
+                          <th></th>
+                          <th></th>
                           <tr>
                             <td><input class="works" type="text" placeholder="日勤" v-model="newItemTitle"></td>
-                            <td><input class="time start" type="text" placeholder="0800" v-model="newItemSelect"> 〜</td>
-                            <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td>
-                            <td> <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button></td>
+                            <!-- <td><input class="time start" type="text" placeholder="0800" v-model="newItemSelect"> 〜</td> -->
+                            <td><v-select class="time start"　:items="workTime" label="開始時間"></v-select></td>
+                            <td><v-select class="time end"　:items="workMinit" label="終了時間"></v-select></td>
+                            <!-- <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td> -->
+                            <!-- <td><input class="time end" type="text" placeholder="1800" v-model="newItemJob"></td> -->
+                            <td> <button class="time push" type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button></td>
                           </tr>
                         </tbody>
                       </table>
@@ -180,18 +183,26 @@
           <v-tab-item>
             <v-row>
               <!-- Layout-Left  -->
-              <v-col cols="6" class="flex" style="">
+              <v-col cols="12" class="flex" style="">
                 <!-- <v-card flat> -->
                 <v-card class="pa-1" outlined tile>
                   <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
-                  <v-col cols="6" style="">
+                  <v-col cols="12" style="">
                     <h3>メンバーリスト</h3>
 
                     <div class="teamGroup">
                       <div class="title_team">Aチーム</div>
                       <div class="title_class">上級</div>
                       <ul>
-                        <li>佐藤真由美</li>
+                        <li class="ngBox">
+                          <p>佐藤真由美</p>
+                          <div class="flex">
+                            <v-select :items="name" label="スタッフ"></v-select> +
+                            <v-select :items="name" label="スタッフ"></v-select>
+                            <textarea name="" id="" cols="" rows="8" placeholder="NG理由など"></textarea>
+                          </div>
+
+                        </li>
                         <li>高橋敏</li>
                         <li>田中善子</li>
                         <li>鈴木雅美</li>
@@ -241,10 +252,10 @@
                 </v-card>
               </v-col>
 
-              <v-col cols="6" class="flex" style="">
-                <!-- <v-card flat> -->
+              <!-- <v-col cols="6" class="flex" style="">
+
                 <v-card class="pa-1" outlined tile>
-                  <!-- <v-card-text>Contents for Item 2 go here</v-card-text> -->
+
                   <v-col cols="12" style="">
                     <h3>NGペア</h3>
                     <v-col cols="12">
@@ -258,7 +269,7 @@
                   <button class="add" type="button" name="button">追加</button>
 
                 </v-card>
-              </v-col>
+              </v-col> -->
 
             </v-row>
           </v-tab-item>
@@ -286,6 +297,8 @@ export default {
     days_max: '',
     teams: ['1A', '1B', '1C', '2A', '2B', '2C'],
     name: ['佐藤真由美', '鈴木雅美', '高橋敏', '田中善子'],
+    workTime:["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
+    workMinit:["00","15","45"],
     items: [{
       title: '日勤',
       isChecked: false,
@@ -300,7 +313,7 @@ export default {
   created: function() {
     this.get_days();
   },
-  methods: { //methodsオプションをまるっと追加
+  methods: { //methodsオプションをまるっと追加zz
     addTodo: function(newItemTitle, newItemSelect, newItemJob) {
       if (this.newItemTitle.length < 1) {
         return false
@@ -330,6 +343,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.flex
+  display: flex
+  min-width: 80vw
+
+
 h1,h2,h3,h4
   font-weight: 400
 .wrap
@@ -381,18 +399,28 @@ h1,h2,h3,h4
    height: 32px
 
 table.working_type
+  margin-top: 16px
   th
     text-align: left
     font-weight: normal
-    padding-left: 14px
-    font-size: 14px
+    padding-left: 4px
+    font-size: 13px
     color: gray
+    margin: 0
+    line-height: 0
   input
     &.works
       width: 8em
+      margin: 0 1em
+  select
     &.time
       padding-left: 12px
       width: 4em
+  button.push
+    margin: 0 0 0 12px
+    white-space: nowrap
+    padding: 4px 24px
+
 
 .teamGroup
   padding: 12px
@@ -411,6 +439,7 @@ table.working_type
 textarea
   border: 1px solid #eee
   width: 100%
+  max-width: 180px
   color: #444
   padding: 12px
   font-size: 14px
@@ -432,5 +461,9 @@ button.add
 //     display: flex
 //     width: 100%
 //     margin-left: 12px
+
+.v-text-field fieldset,
+.v-text-field .v-input__control
+  width: 120px
 
 </style>
