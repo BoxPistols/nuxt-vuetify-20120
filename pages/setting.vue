@@ -30,7 +30,7 @@
           <v-tab-item>
             <v-row>
               <!-- Layout-Left  -->
-              <v-col cols="7" style="">
+              <v-col cols="6" style="">
                 <!-- Basic Conditions -->
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12">
@@ -92,7 +92,7 @@
                       <li v-for="item in items" :key="item.index">
                         <p>
                           <label class="createJobList" v-bind:class="{ done: item.isChecked }">
-                            {{ item.title }}： {{ item.setJobStartHour }}:{{ item.setJobStartMinute }} 〜 {{ item.setJobEndHour }}:{{ item.setJobEndMinute }} <input type="checkbox" class="selectDelete" v-model="item.isChecked">
+                            {{ item.title }}： {{ item.setJobStartHour }}:{{ item.setJobStartMinute }} - {{ item.setJobEndHour }}:{{ item.setJobEndMinute }}  &nbsp;<input type="checkbox" class="selectDelete" v-model="item.isChecked">
                           </label>
                         </p>
                       </li>
@@ -106,7 +106,7 @@
               <!-- /Layout-Left  -->
 
               <!-- Main -->
-              <v-col cols="5">
+              <v-col cols="6">
 
                 <v-card class="pa-1" outlined tile>
                   <v-col cols="12">
