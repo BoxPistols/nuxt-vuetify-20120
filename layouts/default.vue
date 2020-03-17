@@ -61,6 +61,7 @@
          <v-tab nuxt to="/setting">Setting</v-tab>
          <v-tab nuxt to="/calcTable">CalcTable</v-tab>
          <v-tab nuxt to="/api">API</v-tab>
+         <v-tab nuxt to="/apiShift">apiShift</v-tab>
          <!-- <v-tab nuxt to="/todo">ToDo</v-tab> -->
        </v-tabs>
 

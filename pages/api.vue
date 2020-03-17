@@ -2,9 +2,10 @@
   <div>
     <h1>記事一覧</h1>
     <ul>
-      <li v-for="post in posts" :key=post.id>
+      <li v-for="post in posts.slice(0,10)" :key=post.id>
         <h2>{{ post.title }}</h2>
-        <p>{{ post.body}}</p>
+        <p>Post id:{{ post.id}}</p>
+        <p>Contents: {{ post.body}}</p>
       </li>
     </ul>
   </div>

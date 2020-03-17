@@ -1,0 +1,65 @@
+[
+  {
+    "id": 7,
+    "name": "日勤",
+    "beginAt": "18:00",
+    "hours": 9,
+    "minutes": 15
+  },
+  {
+    "id": 11,
+    "name": "早出",
+    "beginAt": "00:15",
+    "hours": 16,
+    "minutes": 0
+  },
+  {
+    "id": 12,
+    "name": "遅出",
+    "beginAt": "22:45",
+    "hours": 14,
+    "minutes": 15
+  },
+  {
+    "id": 18,
+    "name": "午前休",
+    "beginAt": "04:30",
+    "hours": 14,
+    "minutes": 45
+  },
+  {
+    "id": 5,
+    "name": "午後休",
+    "beginAt": "04:00",
+    "hours": 19,
+    "minutes": 45
+  },
+  {
+    "id": 19,
+    "name": "公休",
+    "beginAt": "05:15",
+    "hours": 14,
+    "minutes": 45
+  },
+  {
+    "id": 4,
+    "name": "深夜",
+    "beginAt": "04:15",
+    "hours": 15,
+    "minutes": 30
+  },
+  {
+    "id": 15,
+    "name": "準夜",
+    "beginAt": "03:00",
+    "hours": 20,
+    "minutes": 30
+  },
+  {
+    "id": 2,
+    "name": "日勤Z",
+    "beginAt": "07:15",
+    "hours": 6,
+    "minutes": 0
+  }
+]
