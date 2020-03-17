@@ -110,58 +110,19 @@
                   </v-col>
                 </v-card>
                 <!-- /ToDo List -->
-              </v-col>
-              <!-- /Layout-Left  -->
 
-              <!-- Main -->
-              <v-col cols="6">
 
-                <v-card class="pa-1" outlined tile>
-                  <v-col cols="12">
+                <!-- List-->
+                <v-card class="mt-3 pa-1" outlined tile>
+                  <h3 class="totoList pt-1 pl-2 mb-2">NGシフト</h3>
+                  <ul class="ngLists pa-2">
+                    <li><input type="checkbox">深夜勤/明け → 深夜勤</li>
+                    <li><input type="checkbox">准夜勤 → 日勤</li>
+                    <li><input type="checkbox">5連勤</li>
+                    <li><input type="checkbox">深夜勤/明け → 准夜勤</li>
+                    <li><input type="checkbox">...</li>
 
-                    <!-- Main team-->
-                    <v-card class="pa-1" outlined tile>
-                      <v-col cols="12" class="d-flex">
-                        <v-col cols="6">
-                          <h3 class="pb-3">各曜日に必要な人数</h3>
-                          <div class="d-flex flex-column">
-
-                            <h3>日勤</h3>
-
-                            <div class="form_title">上級：</div>
-                            <div class="form_field">
-                              <v-text-field label="" single-line></v-text-field>
-                            </div>
-
-                            <div class="form_title">初級：</div>
-                            <div class="form_field">
-                              <v-text-field label="" single-line></v-text-field>
-                            </div>
-
-                            <div class="form_title">合計：</div>
-                            <div class="form_field">
-                              <v-text-field label="" single-line></v-text-field>
-                            </div>
-
-                          </div>
-                        </v-col>
-                      </v-col>
-                    </v-card>
-                    <!-- /Week Conditions -->
-
-                  </v-col>
-                  <!-- Members List-->
-                  <v-col cols="12">
-                    <v-card class="pa-1" outlined tile>
-                      <h3 class="totoList pt-1 pl-2 mb-2">NGシフト</h3>
-                      <ul class="ngLists pa-2">
-                        <li><input type="checkbox">深夜勤/明け → 深夜勤</li>
-                        <li><input type="checkbox">准夜勤 → 日勤</li>
-                        <li><input type="checkbox">5連勤</li>
-                        <li><input type="checkbox">深夜勤/明け → 准夜勤</li>
-                        <li><input type="checkbox">...</li>
-
-                        <!--
+                    <!--
                         1.準夜→日勤
                    　　　2.日勤→深夜
                    　　　3.深夜→休→日勤（深夜終了した日の次の日が日勤ということを指している）
@@ -170,10 +131,34 @@
                    　　　6.準深夜→準深夜
                    　　　7.準夜→準夜
                  -->
-                      </ul>
-                    </v-card>
+                  </ul>
+                </v-card>
+
+
+
+              </v-col>
+              <!-- /Layout-Left  -->
+
+              <!-- Main -->
+              <v-col cols="6">
+
+                <v-card class="pa-1 calcArea" outlined tile>
+                  <v-col cols="12">
+
+                    <!-- Calc -->
+
+                      <v-col cols="12" class="d-flex">
+                        <v-col cols="6">
+                          <h3 class="pb-3">各曜日に必要な人数</h3>
+
+                          <CalcTable />
+                        </v-col>
+                      </v-col>
+
+                    <!-- / -->
 
                   </v-col>
+
                 </v-card>
               </v-col>
               <!-- /Main -->
@@ -200,10 +185,12 @@
 
 <script>
 import NGPaire from './ngPaire.vue'
+import CalcTable from './CalcTable.vue'
 
 export default {
   components: {
-    NGPaire
+    NGPaire,
+    CalcTable
   },
   data: () => ({
     date: new Date().toISOString().substr(0, 7),
@@ -369,5 +356,10 @@ button.add
 .v-text-field fieldset,
 .v-text-field .v-input__control
   width: 120px
+
+.calcArea
+  height: 100%
+  min-height: 80vh
+  overflow-y: scroll
 
 </style>

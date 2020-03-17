@@ -244,6 +244,7 @@ export default {
 .memberArea
   max-width: 960px
   margin: auto
+  color: #234
 
 h1,h2,h3,h4
   font-weight: 400
@@ -296,6 +297,7 @@ h3
 
 textarea
   border: 1px solid #abc
+  border-radius: 8px
   width: 100%
   color: #444
   padding: 4px 12px
