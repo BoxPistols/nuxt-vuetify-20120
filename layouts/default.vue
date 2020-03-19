@@ -54,16 +54,17 @@
       </v-btn> -->
 
       <v-tabs>
-         <!-- <v-tab nuxt to="/">Index</v-tab> -->
-         <v-tab nuxt to="/home">Home</v-tab>
-         <v-tab nuxt to="/table">Table</v-tab>
-         <v-tab nuxt to="/layout">Layout</v-tab>
-         <v-tab nuxt to="/setting">Setting</v-tab>
-         <v-tab nuxt to="/calcTable">CalcTable</v-tab>
-         <v-tab nuxt to="/api">API</v-tab>
-         <v-tab nuxt to="/apiShift">apiShift</v-tab>
-         <!-- <v-tab nuxt to="/todo">ToDo</v-tab> -->
-       </v-tabs>
+        <!-- <v-tab nuxt to="/">Index</v-tab> -->
+        <v-tab nuxt to="/home">Home</v-tab>
+        <v-tab nuxt to="/table">Table</v-tab>
+        <v-tab nuxt to="/layout">Layout</v-tab>
+        <v-tab nuxt to="/setting">Setting</v-tab>
+        <v-tab nuxt to="/calcTable">CalcTable</v-tab>
+        <v-tab nuxt to="/api">API</v-tab>
+        <v-tab nuxt to="/apiShift">apiShift</v-tab>
+        <v-tab nuxt to="/adjustCalendar">adjustCalendar</v-tab>
+        <!-- <v-tab nuxt to="/todo">ToDo</v-tab> -->
+      </v-tabs>
 
       <v-spacer />
       <v-btn

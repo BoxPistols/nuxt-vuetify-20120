@@ -5,8 +5,8 @@
     <!-- {{ items }} -->
     <ul>
       <li v-for="item in items.items" :key=item.id>
-        <!-- <p>名前：　{{ item.occupation }}</p> -->
-        <!-- <p>名前：　{{ item.name }}</p> -->
+        <p>occupation:  {{ item.occupation.name }}</p>
+        <p>name：　{{ item.name }}</p>
         <!-- <p>開始時間：　{{ item.beginAt }}</p> -->
       </li>
     </ul>
