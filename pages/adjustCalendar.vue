@@ -4,13 +4,36 @@ v-app#shift_calendar
     v-row
       v-col.controls(sm='12', lg='6')
         .d-flex.flex-row.align-center.ml-3
-          v-select.mr-5(v-model='type',:items='typeOptions',label='表示切替[日/週/月]',hide-details='',outlined='',dense='')
-          v-select(v-model='weekdays',:items='weekdaysOptions',dense='',outlined='',hide-details='',label='表示曜日')
-      v-col.mb-5.controls(sm='12', lg='12')
-        v-btn(fab='',small='',absolute='',left='',color='primary',depressed,@click='$refs.calendar.prev()')
-          v-icon.far.fas.fa-arrow-left
-        v-btn(fab='',small='',absolute='',right='',color='primary',depressed,@click='$refs.calendar.next()')
-          v-icon.far.fas.fa-arrow-right
+          v-select.mr-5(v-model='type',
+          :items='typeOptions',
+          label='表示切替[日/週/月]',
+          hide-details='',
+          outlined='',
+          dense='')
+          v-select(v-model='weekdays',
+          :items='weekdaysOptions',
+          dense='',
+          outlined='',
+          hide-details='',
+          label='表示曜日')
+      v-col.mb-5.controls(sm='12',
+        lg='12')
+          v-btn(fab='',
+          small='',
+          absolute='',
+          left='',
+          color='primary',
+          depressed,
+          @click='$refs.calendar.prev()')
+            v-icon.far.fas.fa-arrow-left
+          v-btn(fab='',
+          small='',
+          absolute='',
+          right='',
+          color='primary',
+          depressed,
+          @click='$refs.calendar.next()')
+            v-icon.far.fas.fa-arrow-right
 
       v-col.pl-4(sm='12')
         v-sheet(height='840')
@@ -41,14 +64,29 @@ v-app#shift_calendar
             :event-color='getEventColor',
             @change='getEvents'
             @click:event='showEvent',
-            @click:more='viewDay',
             @click:date='viewDay',
           )
+
+          // Modal for Add new Event
+          v-dialog(v-model='dialog', persistent='', max-width='320')
+            template(v-slot:activator='{ on }')
+              v-btn(color='primary', v-on='on') Open Dialog
+            v-card
+              v-card-title.headline {{ date }} 
+              v-card-text シフト新規追加
+              v-card-text
+                v-select(:items='names', label='メンバー選択', item-value='text')
+              v-card-text
+                v-select(:items='select', label='シフト種', item-value='text')
+              v-card-actions
+                v-spacer
+                .d-flex
+                v-btn(color='green darken-1', text='', @click='dialog = false') Cancel
+                v-btn(color='green darken-1', text='', @click='testEv') Save
+
 </template>
 
 <script>
-// import Tab from '~/components/Elements/Tab.vue'
-
 const weekdaysDefault = [1, 2, 3, 4, 5, 6, 0]
 
 const intervalsDefault = {
@@ -89,6 +127,7 @@ export default {
 
   data: () => {
     return ({
+      dialog: false,
       dark: false,
       startMenu: false,
       start: '2020-01-31',
@@ -332,16 +371,17 @@ export default {
     },
   },
   methods: {
-    viewDay({
-      date
-    }) {
-      this.focus = date
-      this.type = 'day'
+    viewDay({date}) {      
+      // this.focus = date
+      // this.type = 'day'
+      // this.type = 'month'
+      this.date = date;
+      this.dialog = true;
+      alert(this.date)
+      // this.start = date
     },
-    showEvent({
-      nativeEvent,
-      event
-    }) {
+    showEvent({ nativeEvent, event}) {
+      alert();
       const open = () => {
         this.selectedEvent = event
         this.selectedElement = nativeEvent.target
@@ -354,12 +394,6 @@ export default {
         open()
       }
       nativeEvent.stopPropagation()
-    },
-    viewDay({
-      date
-    }) {
-      this.start = date
-      this.type = "day"
     },
     getEventColor(event) {
       return event.color
