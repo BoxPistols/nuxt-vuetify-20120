@@ -122,7 +122,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Home',
           to: '/home'
-        }
+        },
+        {
+          // title: 'adjustCalendar',
+          // to: '/adjustCalendar'
+        },
       ],
       miniVariant: false,
       right: true,
