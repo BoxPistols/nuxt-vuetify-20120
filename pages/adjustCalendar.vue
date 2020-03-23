@@ -10,51 +10,26 @@ v-app#shift_calendar
           hide-details='',
           outlined='',
           dense='')
-          //- v-select(v-model='weekdays',
-          //- :items='weekdaysOptions',
-          //- dense='',
-          //- outlined='',
-          //- hide-details='',
-          //- label='表示曜日')
+      
       v-col.mb-5.controls(sm='12',
         lg='12')
-          v-btn(fab='',
-          small='',
-          absolute='',
-          left='',
-          color='primary',
-          depressed,
-          @click='$refs.calendar.prev()')
-            v-icon.far.fas.fa-arrow-left
-          v-btn(fab='',
-          small='',
-          absolute='',
-          right='',
-          color='primary',
-          depressed,
-          @click='$refs.calendar.next()')
-            v-icon.far.fas.fa-arrow-right
+        v-btn(outlined absolute　left　class="mr-3" color="blue-grey lighten-3" @click="$refs.calendar.prev()" ) 前月
+        v-toolbar-title(class="now") {{ title }}
+        v-btn(outlined absolute　right　class="ml-3" color="blue-grey lighten-3" @click="$refs.calendar.next()" ) 次月
 
       v-col.pl-4(sm='12')
         v-sheet(height='840')
           v-calendar(
             ref='calendar',
+            locale='ja-jp',
             v-model='start',
             :type='type',
             :start='start',
             :end='end',
             :min-weeks='minWeeks',
             :max-days='maxDays',
-            :now='now',
-            :dark='dark',
+            :now='today',
             :weekdays='weekdays',
-            :first-interval='intervals.first',
-            :interval-minutes='intervals.minutes',
-            :interval-count='intervals.count',
-            :interval-height='intervals.height',
-            :interval-style='intervalStyle',
-            :show-interval-label='showIntervalLabel',
-            :short-intervals='shortIntervals',
             :short-months='shortMonths',
             :short-weekdays='shortWeekdays',
             :color='color',
@@ -71,8 +46,6 @@ v-app#shift_calendar
 
           // Modal for Add new Event
           v-dialog(v-model='dialog', persistent='', max-width='320')
-            template(v-slot:activator='{ on }')
-              v-btn(color='primary', v-on='on') Open Dialog
             v-card
               v-card-title.headline {{ date }} 
               v-card-text シフト新規追加
@@ -90,38 +63,6 @@ v-app#shift_calendar
 
 <script>
 const weekdaysDefault = [1, 2, 3, 4, 5, 6, 0]
-
-const intervalsDefault = {
-  first: 1,
-  minutes: 60,
-  count: 24,
-  height: 48,
-}
-
-const stylings = {
-  default (interval) {
-    return undefined
-  },
-  workday(interval) {
-    const inactive = interval.weekday === 0 ||
-      interval.weekday === 6 ||
-      interval.hour < 9 ||
-      interval.hour >= 17
-    const startOfHour = interval.minute === 0
-    const dark = this.dark
-    const mid = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
-
-    return {
-      backgroundColor: inactive ? (dark ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.05)') : undefined,
-      borderTop: startOfHour ? undefined : '1px dashed ' + mid,
-    }
-  },
-  past(interval) {
-    return {
-      backgroundColor: interval.past ? (this.dark ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.05)') : undefined,
-    }
-  },
-}
 
 export default {
   name: 'MyCalender',
@@ -141,14 +82,13 @@ export default {
         {text: "準夜"},
         {text: "公休"}
       ],
-      dark: false,
       startMenu: false,
-      start: '2020-01-31',
+      start: '2020-03-01',
       endMenu: false,
-      end: '2020-02-29',
-      nowMenu: false,
+      end: '2020-03-31',
+      nowMenu: true,
       minWeeks: 1,
-      now: null,
+      now: true,
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
       names: ['日勤 佐藤真弓', '公休 鈴木雅美', '夜勤 高橋敏子', '遅出 田中善子', '午前休 吉田輝美'],
@@ -185,10 +125,6 @@ export default {
           text: '1日表示',
           value: 'day'
         },
-        {
-          text: '4日表示',
-          value: '4day'
-        },
       ],
       mode: 'stack',
       modeOptions: [{
@@ -204,33 +140,6 @@ export default {
       weekdaysOptions: [{
           text: '月曜 - 日曜',
           value: weekdaysDefault
-        },
-        {
-          text: '月曜 - 金曜',
-          value: [1, 2, 3, 4, 5]
-        },
-        {
-          text: '土 - 日',
-          value: [6, 0]
-        },
-        {
-          text: '月, 水, 金',
-          value: [1, 3, 5]
-        },
-      ],
-      intervals: intervalsDefault,
-      intervalsOptions: [{
-          text: 'Default',
-          value: intervalsDefault
-        },
-        {
-          text: 'Workday',
-          value: {
-            first: 16,
-            minutes: 30,
-            count: 20,
-            height: 48
-          }
         },
       ],
       maxDays: 7,
@@ -249,20 +158,6 @@ export default {
         {
           text: '3 days',
           value: 3
-        },
-      ],
-      styleInterval: 'default',
-      styleIntervalOptions: [{
-          text: 'デフォルト',
-          value: 'default'
-        },
-        {
-          text: '勤務時間帯',
-          value: 'workday'
-        },
-        {
-          text: 'オフ',
-          value: 'past'
         },
       ],
       color: 'primary',
@@ -359,22 +254,13 @@ export default {
           value: 'black'
         },
       ],
-      shortIntervals: false,
       shortMonths: false,
       shortWeekdays: true,
     })
   },
   computed: {
-    intervalStyle() {
-      return stylings[this.styleInterval].bind(this)
-    },
-    hasIntervals() {
-      return this.type in {
-        week: 1,
-        day: 1,
-        '4day': 1,
-        'custom-daily': 1,
-      }
+    title() {
+      return this.start.slice(0,7).split('-').join('/')
     },
     hasEnd() {
       return this.type in {
@@ -416,9 +302,6 @@ export default {
     },
     getEventColor(event) {
       return event.color
-    },
-    showIntervalLabel(interval) {
-      return interval.minute === 0
     },
     getEvents({
       start,
@@ -464,17 +347,17 @@ export default {
 
 <style scoped lang="stylus">
 #shift_calendar
-  // for Prev & Next Arrow
-  .controls
-    position: relative
-    z-index: 1
-
-  >>>.pl-1
+  .v-toolbar__title
+      &.now
+          position absolute
+          left 50%
+          transform translate(-50%, 0%)
+  >>>.v-event > .pl-1
     font-weight 600
     font-size 11px
-    padding 0px 1px 0px 3px !important
-    line-height 1.4
-    strong
+    padding 1px 1px 0 3px !important
+    line-height 1.5
+    >strong
       display none
   >>>div:empty
     display none
@@ -516,24 +399,21 @@ export default {
 
 
   >>>.v-calendar-weekly__day.v-past,
-  >>>.v-calendar-weekly__day.v-future, >>>.v-calendar-weekly__day.v-present
+  >>>.v-calendar-weekly__day.v-future,
+  >>>.v-calendar-weekly__day.v-present
       position relative
       padding-top 24px
       transition .2s
-
-  >>>.v-calendar-weekly__day.v-past:hover, >>>.v-calendar-weekly__day.v-future:hover, >>>.v-calendar-weekly__day.v-present:hover
-      cursor pointer
-      background-color #f0fffc
-
-  >>>.v-calendar-weekly__day.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed,
-  >>>.v-calendar-weekly__day.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed,
-  >>>.v-calendar-weekly__day.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed
-      position absolute
-      top 0
-      left 0
-      width 100%
-      height 100%
-      border-radius 0
+      :hover
+          cursor pointer
+          background-color #f0fffc
+      .v-calendar-weekly__day-label .v-btn.v-btn--depressed
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+        border-radius 0
 
   >>>.v-btn__content
     position absolute
