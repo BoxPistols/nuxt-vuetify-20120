@@ -41,17 +41,44 @@ v-app#shift_calendar
           )
 
           // Modal for Add edit Event
-          v-dialog(v-model='selectedOpen', persistent='', max-width='320')
-            v-card.dialogCard.edit
-              v-toolbar-title.headline(v-if="selectedEvent" v-html='selectedEvent.name')
-              v-card-text シフト変更
-              v-card-text
-                v-select(:items='select', label='シフト種', item-value='text')
-              v-card-actions
+          //- v-dialog(v-model='selectedOpen', persistent='', max-width='320')
+          //-   v-card.dialogCard.edit
+          //-     v-toolbar-title.headline(v-if="selectedEvent" v-html='selectedEvent.name')
+          //-     v-card-text シフト変更
+          //-     v-card-text
+          //-       v-select(:items='select', label='シフト種', item-value='text')
+          //-     v-card-actions
+          //-       v-spacer
+          //-       .d-flex
+          //-       v-btn(color='green darken-1', text='', @click='selectedOpen = false') Cancel
+          //-       v-btn(color='green darken-1', text='', @click='saveEvent') Save
+
+
+          v-menu(v-model='selectedOpen', :close-on-content-click='false', :activator='selectedElement', offset-x='')
+            v-card(color='grey lighten-4', min-width='300px', flat='')
+              v-toolbar(:color='selectedEvent.color', dark='')
+                v-toolbar-title(v-html='selectedEvent.name')
                 v-spacer
-                .d-flex
-                v-btn(color='green darken-1', text='', @click='selectedOpen = false') Cancel
-                v-btn(color='green darken-1', text='', @click='saveEvent') Save
+                v-toolbar-title.ml-4(v-html='selectedEvent.belong')
+                v-spacer
+                v-toolbar-title.ml-4(v-html='selectedEvent.class')
+                v-spacer
+                v-toolbar-title.ml-4(v-html='selectedEvent.job')
+                v-spacer
+                v-btn(icon='')
+                  v-icon  delete
+              v-card-actions
+                v-btn(icon='')
+                  v-icon
+                    | mdi-pencil
+                v-card-text
+                  v-row(justify='space-around')
+                    v-col(cols='４')
+                      v-select(v-model='work', :items='select', label='希望変更')
+                v-btn(text-color='secondary', outlined='', color='grey', @click='selectedOpen = false')
+                  | Cancel
+                v-btn.ml-2(text-color='primary', outlined='', color='teal', @click='selectedOpen = false')
+                  | Save
 
 
           // Modal for Add new Event
