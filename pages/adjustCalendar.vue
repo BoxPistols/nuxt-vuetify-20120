@@ -11,7 +11,7 @@ v-app#shift_calendar
           hide-details='',
           outlined='',
           dense='')
-        v-toolbar-title(class="now") {{ title }}
+        v-toolbar-title(class="titleMonth") {{ titleMonth }}
         v-btn(outlined absolute　right　class="ml-3" color="blue-grey lighten-3" @click="$refs.calendar.next()" ) 次月
 
       v-col.pl-4(sm='12')
@@ -43,7 +43,7 @@ v-app#shift_calendar
           // Modal for Add new Event
           v-dialog(v-model='dialog', persistent='', max-width='320')
             v-card.dialogCard
-              v-card-title.headline {{ title }} 
+              v-card-title.headline {{ titleMonth }} 
               v-card-text シフト新規追加
               v-card-text
                 v-select(:items='names', label='メンバー選択', item-value='text')
@@ -54,7 +54,6 @@ v-app#shift_calendar
                 .d-flex
                 v-btn(color='green darken-1', text='', @click='dialog = false') Cancel
                 v-btn(color='green darken-1', text='', @click='saveEvent') Save
-
 </template>
 
 <script>
@@ -227,7 +226,7 @@ export default {
     })
   },
   computed: {
-    title() {
+    titleMonth() {
       return this.start.slice(0,7).split('-').join('/')
     },
   },
@@ -236,7 +235,7 @@ export default {
       this.dialog = true;
     },
     saveEvent({add}) {
-      // this.event = event;
+      // set save event
       this.dialog = false;
     },
     viewMore({more}) {
@@ -306,14 +305,15 @@ export default {
 #shift_calendar
   .selectType
     position absolute
-    right 240px
-    width 220px
+    right 100px
+    width 150px
+    top 10px
   .v-toolbar__title
-    &.now
+    &.titleMonth
       position absolute
       left 50%
       transform translate(-50%, 0%)
-  >>>.v-event > .pl-1
+  >>>.v-event > .pl-1 
     font-weight 600
     font-size 11px
     padding 1px 1px 0 3px !important
@@ -327,18 +327,18 @@ export default {
     .v-event, .v-event-more
       position relative
       overflow hidden
+      margin 0 2px
+      padding 2px 4px 0px 1px
+      max-width fit-content
       text-overflow ellipsis
       white-space nowrap
       font-size 12px
-      cursor pointer
-      z-index 1
       display inline-block
-      max-width fit-content
-      padding 2px 4px 0px 1px
       border-radius 2px
       line-height 1.6
       box-shadow 0 1px 1px #ccc
-      margin 0 2px
+      cursor pointer
+      z-index 1
 
   >>>.v-calendar-daily
     background-color #fff
@@ -350,33 +350,36 @@ export default {
       width 0
       position relative
       overflow scroll
+      &.v-future
+        padding 12px 32px
     &__body
       display none
     &__head
       height 100%
-      max-height 70vh
+      max-height 70vh 
 
-  >>>.v-calendar-weekly__head-weekday
-    font-size 12px
-    background #f3f3ee
-    border 1px solid #ccc
-    margin -1px -1px 0
-  >>>.v-calendar-weekly__day
-    &.v-past,
-    &.v-future,
-    &.v-present
-      position relative
-      padding-top 24px
-      transition .2s
-      :hover
-        cursor pointer
-      .v-calendar-weekly__day-label .v-btn.v-btn--depressed
-        position absolute
-        top 0
-        left 0
-        width 100%
-        height 100%
-        border-radius 0
+ >>>.v-calendar-weekly
+    &__head-weekday
+      font-size 12px
+      background #f3f3ee
+      border 1px solid #ccc
+      margin -1px -1px 0
+    &__day
+      &.v-past,
+      &.v-future,
+      &.v-present
+        position relative
+        padding-top 24px
+        transition .2s
+        :hover
+          cursor pointer
+        .v-calendar-weekly__day-label .v-btn.v-btn--depressed
+          position absolute
+          top 0
+          left 0
+          width 100%
+          height 100%
+          border-radius 0
 
   >>>.v-btn__content
     position absolute
