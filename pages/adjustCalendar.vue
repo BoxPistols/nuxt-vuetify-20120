@@ -2,7 +2,7 @@
 v-app#shift_calendar
   div
     v-row
-      v-col.controls(sm='12', lg='6')
+      v-col.controls(sm='4')
         .d-flex.flex-row.align-center.ml-3
           v-select.mr-5(v-model='type',
           :items='typeOptions',
@@ -10,12 +10,12 @@ v-app#shift_calendar
           hide-details='',
           outlined='',
           dense='')
-          v-select(v-model='weekdays',
-          :items='weekdaysOptions',
-          dense='',
-          outlined='',
-          hide-details='',
-          label='表示曜日')
+          //- v-select(v-model='weekdays',
+          //- :items='weekdaysOptions',
+          //- dense='',
+          //- outlined='',
+          //- hide-details='',
+          //- label='表示曜日')
       v-col.mb-5.controls(sm='12',
         lg='12')
           v-btn(fab='',
@@ -465,19 +465,10 @@ export default {
 <style scoped lang="stylus">
 #shift_calendar
   // for Prev & Next Arrow
-  >>>.controls
+  .controls
     position: relative
     z-index: 1
-  // not set Vieutify icon (Material icon)
-  >>>.v-input__icon > .material-icons, .v-input__prepend-outer
-    display none
 
-.v-checkboxArea
-  margin 24px 0 0 12px
-  .v-input.v-checkboxModule.v-input--selection-controls.v-input--checkbox
-    display contents
-
-#shift_calendar
   >>>.pl-1
     font-weight 600
     font-size 11px
@@ -485,7 +476,6 @@ export default {
     line-height 1.4
     strong
       display none
-
   >>>div:empty
     display none
 
@@ -505,9 +495,7 @@ export default {
     box-shadow 0 1px 1px #ccc
     margin 0 2px
 
-
-  >>>.theme--light
-    &.v-calendar-daily
+  >>> .v-calendar-daily
       background-color #fff
       border-left 1px solid #e0e0e0
       border-top 1px solid #e0e0e0
@@ -537,9 +525,9 @@ export default {
       cursor pointer
       background-color #f0fffc
 
-  >>>.v-calendar-weekly__day.v-past >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed,
-  >>>.v-calendar-weekly__day.v-future >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed,
-  >>>.v-calendar-weekly__day.v-present >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed
+  >>>.v-calendar-weekly__day.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed,
+  >>>.v-calendar-weekly__day.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed,
+  >>>.v-calendar-weekly__day.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed
       position absolute
       top 0
       left 0
@@ -547,11 +535,9 @@ export default {
       height 100%
       border-radius 0
 
-  >>>.v-calendar-weekly__day.v-past >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content,
-  >>>.v-calendar-weekly__day.v-future >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content,
-  >>>.v-calendar-weekly__day.v-present >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content
-      position absolute
-      top 8px
+  >>>.v-btn__content
+    position absolute
+    top 8px
 
   >>>.v-dialog
       &.v-dialog--active
