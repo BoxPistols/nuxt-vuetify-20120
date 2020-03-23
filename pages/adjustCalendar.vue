@@ -40,7 +40,7 @@ v-app#shift_calendar
             @click:more="viewMore"            
           )
 
-          // modal content
+          // Modal for Add edit Event
           v-dialog(v-model='selectedOpen', persistent='', max-width='320')
             v-card.dialogCard.edit
               v-toolbar-title.headline(v-if="selectedEvent" v-html='selectedEvent.name')

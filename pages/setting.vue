@@ -185,7 +185,7 @@
 
 <script>
 import NGPaire from './ngPaire.vue'
-import CalcTable from './CalcTable.vue'
+import CalcTable from './calcTable.vue'
 
 export default {
   components: {
