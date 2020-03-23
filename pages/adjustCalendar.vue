@@ -65,6 +65,8 @@ v-app#shift_calendar
             @change='getEvents'
             @click:event='showEvent',
             @click:date='viewDay',
+            @click:add="saveEvent"
+            @click:more="viewMore"
           )
 
           // Modal for Add new Event
@@ -82,7 +84,7 @@ v-app#shift_calendar
                 v-spacer
                 .d-flex
                 v-btn(color='green darken-1', text='', @click='dialog = false') Cancel
-                v-btn(color='green darken-1', text='', @click='testEv') Save
+                v-btn(color='green darken-1', text='', @click='saveEvent') Save
 
 </template>
 
@@ -128,6 +130,17 @@ export default {
   data: () => {
     return ({
       dialog: false,
+      select: [
+        {text: "日勤"},
+        {text: "早出"},
+        {text: "遅出"},
+        {text: "午前休"},
+        {text: "午後休"},
+        {text: "深夜"},
+        {text: "明け"},
+        {text: "準夜"},
+        {text: "公休"}
+      ],
       dark: false,
       startMenu: false,
       start: '2020-01-31',
@@ -374,14 +387,20 @@ export default {
     viewDay({date}) {      
       // this.focus = date
       // this.type = 'day'
-      // this.type = 'month'
       this.date = date;
       this.dialog = true;
-      alert(this.date)
       // this.start = date
     },
+    saveEvent({add}) {
+      this.event = event;
+      this.dialog = false;
+    },
+    viewMore({more}) {
+      this.focus = more;
+      this.type = "day";
+    },
     showEvent({ nativeEvent, event}) {
-      alert();
+      alert(this.event);
       const open = () => {
         this.selectedEvent = event
         this.selectedElement = nativeEvent.target
@@ -410,7 +429,7 @@ export default {
       const min = new Date(`${start.date}T00:00:00`)
       const max = new Date(`${end.date}T23:59:59`)
       const days = (max.getTime() - min.getTime()) / 86400000
-      const eventCount = this.rnd(days, days + 320)
+      const eventCount = this.rnd(days, days + 90)
 
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0, 3) === 0
@@ -507,4 +526,41 @@ export default {
     height 100%
     max-height 70vh
 
+
+  >>>.v-calendar-weekly__day.v-past,
+  >>>.v-calendar-weekly__day.v-future, >>>.v-calendar-weekly__day.v-present
+      position relative
+      padding-top 24px
+      transition .2s
+
+  >>>.v-calendar-weekly__day.v-past:hover, >>>.v-calendar-weekly__day.v-future:hover, >>>.v-calendar-weekly__day.v-present:hover
+      cursor pointer
+      background-color #f0fffc
+
+  >>>.v-calendar-weekly__day.v-past >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed,
+  >>>.v-calendar-weekly__day.v-future >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed,
+  >>>.v-calendar-weekly__day.v-present >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      border-radius 0
+
+  >>>.v-calendar-weekly__day.v-past >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content,
+  >>>.v-calendar-weekly__day.v-future >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content,
+  >>>.v-calendar-weekly__day.v-present >>>.v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content
+      position absolute
+      top 8px
+
+  >>>.v-dialog
+      &.v-dialog--active
+          &.v-dialog--persistent
+              border 3px solid #228b22
+
+  >>>.v-calendar-weekly__head-weekday
+      font-size 12px
+      background #f3f3ee
+      border 1px solid #ccc
+      margin -1px -1px 0
 </style>

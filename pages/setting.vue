@@ -185,12 +185,12 @@
 
 <script>
 import NGPaire from './ngPaire.vue'
-import CalcTable from './calcTable.vue'
+import CalcTable from './CalcTable.vue'
 
 export default {
   components: {
     NGPaire,
-    calcTable
+    CalcTable
   },
   data: () => ({
     date: new Date().toISOString().substr(0, 7),
