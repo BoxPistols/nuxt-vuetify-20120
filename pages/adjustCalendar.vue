@@ -2,18 +2,15 @@
 v-app#shift_calendar
   div
     v-row
-      v-col.controls(sm='4')
-        .d-flex.flex-row.align-center.ml-3
-          v-select.mr-5(v-model='type',
-          :items='typeOptions',
-          label='表示切替[日/週/月]',
-          hide-details='',
-          outlined='',
-          dense='')
-      
       v-col.mb-5.controls(sm='12',
         lg='12')
         v-btn(outlined absolute　left　class="mr-3" color="blue-grey lighten-3" @click="$refs.calendar.prev()" ) 前月
+        v-select.selectType(v-model='type',
+          :items='typeOptions',
+          label='表示切替',
+          hide-details='',
+          outlined='',
+          dense='')
         v-toolbar-title(class="now") {{ title }}
         v-btn(outlined absolute　right　class="ml-3" color="blue-grey lighten-3" @click="$refs.calendar.next()" ) 次月
 
@@ -28,7 +25,6 @@ v-app#shift_calendar
             :end='end',
             :min-weeks='minWeeks',
             :max-days='maxDays',
-            :now='today',
             :weekdays='weekdays',
             :short-months='shortMonths',
             :short-weekdays='shortWeekdays',
@@ -46,8 +42,8 @@ v-app#shift_calendar
 
           // Modal for Add new Event
           v-dialog(v-model='dialog', persistent='', max-width='320')
-            v-card
-              v-card-title.headline {{ date }} 
+            v-card.dialogCard
+              v-card-title.headline {{ title }} 
               v-card-text シフト新規追加
               v-card-text
                 v-select(:items='names', label='メンバー選択', item-value='text')
@@ -68,7 +64,7 @@ export default {
   name: 'MyCalender',
   components: {},
 
-  data: () => {
+  data(){
     return ({
       dialog: false,
       select: [
@@ -86,9 +82,7 @@ export default {
       start: '2020-03-01',
       endMenu: false,
       end: '2020-03-31',
-      nowMenu: true,
       minWeeks: 1,
-      now: true,
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
       names: ['日勤 佐藤真弓', '公休 鈴木雅美', '夜勤 高橋敏子', '遅出 田中善子', '午前休 吉田輝美'],
@@ -122,20 +116,11 @@ export default {
           value: 'week'
         },
         {
-          text: '1日表示',
+          text: '日表示',
           value: 'day'
         },
       ],
       mode: 'stack',
-      modeOptions: [{
-          text: 'カードを重ねる',
-          value: 'stack'
-        },
-        {
-          text: 'カードを重ねない',
-          value: 'column'
-        },
-      ],
       weekdays: weekdaysDefault,
       weekdaysOptions: [{
           text: '月曜 - 日曜',
@@ -143,23 +128,6 @@ export default {
         },
       ],
       maxDays: 7,
-      maxDaysOptions: [{
-          text: '7 days',
-          value: 7
-        },
-        {
-          text: '5 days',
-          value: 5
-        },
-        {
-          text: '4 days',
-          value: 4
-        },
-        {
-          text: '3 days',
-          value: 3
-        },
-      ],
       color: 'primary',
       colorOptions: [{
           text: 'Primary',
@@ -262,23 +230,13 @@ export default {
     title() {
       return this.start.slice(0,7).split('-').join('/')
     },
-    hasEnd() {
-      return this.type in {
-        'custom-weekly': 1,
-        'custom-daily': 1,
-      }
-    },
   },
   methods: {
     viewDay({date}) {      
-      // this.focus = date
-      // this.type = 'day'
-      this.date = date;
       this.dialog = true;
-      // this.start = date
     },
     saveEvent({add}) {
-      this.event = event;
+      // this.event = event;
       this.dialog = false;
     },
     viewMore({more}) {
@@ -330,7 +288,6 @@ export default {
           color: this.colors[this.rnd(0, this.colors.length - 1)],
         })
       }
-
       this.events = events
     },
     rnd(a, b) {
@@ -341,17 +298,21 @@ export default {
         `${a.getFullYear()}-${a.getMonth() + 1}-${a.getDate()} ${a.getHours()}:${a.getMinutes()}` :
         `${a.getFullYear()}-${a.getMonth() + 1}-${a.getDate()}`
     },
-  },
+  } 
 }
 </script>
 
 <style scoped lang="stylus">
 #shift_calendar
+  .selectType
+    position absolute
+    right 240px
+    width 220px
   .v-toolbar__title
-      &.now
-          position absolute
-          left 50%
-          transform translate(-50%, 0%)
+    &.now
+      position absolute
+      left 50%
+      transform translate(-50%, 0%)
   >>>.v-event > .pl-1
     font-weight 600
     font-size 11px
@@ -362,51 +323,53 @@ export default {
   >>>div:empty
     display none
 
-  >>>.v-calendar .v-event, .v-calendar .v-event-more
-    position relative
-    overflow hidden
-    text-overflow ellipsis
-    white-space nowrap
-    font-size 12px
-    cursor pointer
-    z-index 1
-    display inline-block
-    max-width fit-content
-    padding 2px 4px 0px 1px
-    border-radius 2px
-    line-height 1.6
-    box-shadow 0 1px 1px #ccc
-    margin 0 2px
+  >>>.v-calendar
+    .v-event, .v-event-more
+      position relative
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+      font-size 12px
+      cursor pointer
+      z-index 1
+      display inline-block
+      max-width fit-content
+      padding 2px 4px 0px 1px
+      border-radius 2px
+      line-height 1.6
+      box-shadow 0 1px 1px #ccc
+      margin 0 2px
 
-  >>> .v-calendar-daily
-      background-color #fff
-      border-left 1px solid #e0e0e0
-      border-top 1px solid #e0e0e0
-      overflow scroll
-
-  >>>.v-calendar-daily_head-day
-    flex 1 1 auto
-    width 0
-    position relative
+  >>>.v-calendar-daily
+    background-color #fff
+    border-left 1px solid #e0e0e0
+    border-top 1px solid #e0e0e0
     overflow scroll
+    &_head-day
+      flex 1 1 auto
+      width 0
+      position relative
+      overflow scroll
+    &__body
+      display none
+    &__head
+      height 100%
+      max-height 70vh
 
-  >>>.v-calendar-daily__body
-    display none
-
-  >>>.v-calendar-daily__head
-    height 100%
-    max-height 70vh
-
-
-  >>>.v-calendar-weekly__day.v-past,
-  >>>.v-calendar-weekly__day.v-future,
-  >>>.v-calendar-weekly__day.v-present
+  >>>.v-calendar-weekly__head-weekday
+    font-size 12px
+    background #f3f3ee
+    border 1px solid #ccc
+    margin -1px -1px 0
+  >>>.v-calendar-weekly__day
+    &.v-past,
+    &.v-future,
+    &.v-present
       position relative
       padding-top 24px
       transition .2s
       :hover
-          cursor pointer
-          background-color #f0fffc
+        cursor pointer
       .v-calendar-weekly__day-label .v-btn.v-btn--depressed
         position absolute
         top 0
@@ -419,14 +382,11 @@ export default {
     position absolute
     top 8px
 
-  >>>.v-dialog
-      &.v-dialog--active
-          &.v-dialog--persistent
-              border 3px solid #228b22
+  >>>.v-btn.v-btn--depressed.v-btn--fab.primary
+    color: #234
+    border-radius: 0
+    background: #eee !important
 
-  >>>.v-calendar-weekly__head-weekday
-      font-size 12px
-      background #f3f3ee
-      border 1px solid #ccc
-      margin -1px -1px 0
+.dialogCard
+  border: 3px solid #228b22
 </style>
