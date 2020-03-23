@@ -84,7 +84,7 @@ v-app#shift_calendar
           // Modal for Add new Event
           v-dialog(v-model='dialog', persistent='', max-width='320')
             v-card.dialogCard
-              v-card-title.headline {{ titleMonth }} 
+              v-card-title.headline(v-html='titleAddEvent')
               v-card-text シフト新規追加
               v-card-text
                 v-select(:items='names', label='メンバー選択', item-value='text')
@@ -139,14 +139,23 @@ export default {
         "明け",
       ],
       names: [
-        "山田太郎",
-        "吉田花子",
-        "斎藤綾乃",
-        "本山茂",
+        "赤木菜緒",
+        "成田宏美	",
+        "石坂輝男	",
+        "磯崎晃子	",
         "迫美香子",
         "伊集院進ノ介",
         "三輪幸子",
-        "結城純"
+        "結城純",
+        "半田新次郎",
+        "重田日奈",
+        "松崎昌己",
+        "玉置紗菜",
+        "三輪心彩",
+        "新村里香",
+        "武藤麻里",
+        "藤沢由紀",
+        "諸星克子",
       ],
       type: 'month',
       typeOptions: [{
@@ -272,6 +281,9 @@ export default {
     titleMonth() {
       return this.start.slice(0,7).split('-').join('/')
     },
+    titleAddEvent() {
+      return this.start.slice(5,12).split('-').join('/')
+    },
   },
   methods: {
     viewDay({date}) {      
@@ -347,8 +359,8 @@ export default {
 #shift_calendar
   .selectType
     position absolute
-    right 100px
-    width 150px
+    right 120px
+    width 120px
     top 10px
   .v-toolbar__title
     &.titleMonth
