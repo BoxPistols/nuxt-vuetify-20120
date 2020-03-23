@@ -23,7 +23,6 @@ v-app#shift_calendar
             :type='type',
             :start='start',
             :end='end',
-            :now="today"
             :min-weeks='minWeeks',
             :max-days='maxDays',
             :weekdays='weekdays',
@@ -44,7 +43,7 @@ v-app#shift_calendar
           // modal content
           v-dialog(v-model='selectedOpen', persistent='', max-width='320')
             v-card.dialogCard.edit
-              v-toolbar-title.headline(v-html='selectedEvent.name')
+              v-toolbar-title.headline(v-if="selectedEvent" v-html='selectedEvent.name')
               v-card-text シフト変更
               v-card-text
                 v-select(:items='select', label='シフト種', item-value='text')
@@ -82,6 +81,7 @@ export default {
     return ({
       dialog: false,
       selectedOpen: false,
+      selectedEvent: {},
       select: [
         {text: "日勤"},
         {text: "早出"},
