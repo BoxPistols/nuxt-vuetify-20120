@@ -23,6 +23,7 @@ v-app#shift_calendar
             :type='type',
             :start='start',
             :end='end',
+            :now="today"
             :min-weeks='minWeeks',
             :max-days='maxDays',
             :weekdays='weekdays',
@@ -37,8 +38,22 @@ v-app#shift_calendar
             @click:event='showEvent',
             @click:date='viewDay',
             @click:add="saveEvent"
-            @click:more="viewMore"
+            @click:more="viewMore"            
           )
+
+          // modal content
+          v-dialog(v-model='selectedOpen', persistent='', max-width='320')
+            v-card.dialogCard.edit
+              v-toolbar-title.headline(v-html='selectedEvent.name')
+              v-card-text シフト変更
+              v-card-text
+                v-select(:items='select', label='シフト種', item-value='text')
+              v-card-actions
+                v-spacer
+                .d-flex
+                v-btn(color='green darken-1', text='', @click='selectedOpen = false') Cancel
+                v-btn(color='green darken-1', text='', @click='saveEvent') Save
+
 
           // Modal for Add new Event
           v-dialog(v-model='dialog', persistent='', max-width='320')
@@ -66,6 +81,7 @@ export default {
   data(){
     return ({
       dialog: false,
+      selectedOpen: false,
       select: [
         {text: "日勤"},
         {text: "早出"},
@@ -84,7 +100,7 @@ export default {
       minWeeks: 1,
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      names: ['日勤 佐藤真弓', '公休 鈴木雅美', '夜勤 高橋敏子', '遅出 田中善子', '午前休 吉田輝美'],
+      // names: ['日勤 佐藤真弓', '公休 鈴木雅美', '夜勤 高橋敏子', '遅出 田中善子', '午前休 吉田輝美'],
       shifts: [
         "日勤",
         "夜勤",
@@ -391,4 +407,6 @@ export default {
 
 .dialogCard
   border: 3px solid #228b22
+  &.edit
+    border: 3px solid darkorange
 </style>
