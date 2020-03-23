@@ -97,10 +97,10 @@ export default {
       start: '2020-03-01',
       endMenu: false,
       end: '2020-03-31',
+      
       minWeeks: 1,
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      // names: ['日勤 佐藤真弓', '公休 鈴木雅美', '夜勤 高橋敏子', '遅出 田中善子', '午前休 吉田輝美'],
       shifts: [
         "日勤",
         "夜勤",
