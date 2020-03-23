@@ -242,15 +242,16 @@ export default {
       this.focus = more;
       this.type = "day";
     },
-    showEvent({ nativeEvent, event}) {
-      alert(this.event);
+    showEvent({ nativeEvent, event}) {      
       const open = () => {
         this.selectedEvent = event
         this.selectedElement = nativeEvent.target
         setTimeout(() => this.selectedOpen = true, 10)
+        // getData
+        // console.log(`${this.selectedEvent.start} - ${this.selectedEvent.end} : ${this.selectedEvent.name}`) 
       }
       if (this.selectedOpen) {
-        this.selectedOpen = false
+        this.selectedOpen = false        
         setTimeout(open, 10)
       } else {
         open()
@@ -265,12 +266,11 @@ export default {
       end
     }) {
       const events = []
-
       const min = new Date(`${start.date}T00:00:00`)
       const max = new Date(`${end.date}T23:59:59`)
       const days = (max.getTime() - min.getTime()) / 86400000
       const eventCount = this.rnd(days, days + 90)
-
+      
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0, 3) === 0
         const firstTimestamp = this.rnd(min.getTime(), max.getTime())
@@ -280,7 +280,6 @@ export default {
 
         let shiftBar = this.shifts[this.rnd(0, this.shifts.length - 1)]
         events.push({
-          // name: this.names[this.rnd(0, this.names.length - 1)],
           name: shiftBar + " " + this.names[this.rnd(0, this.names.length - 1)],
           start: this.formatDate(first, !allDay),
           end: this.formatDate(second, !allDay),
@@ -358,7 +357,7 @@ export default {
       height 100%
       max-height 70vh 
 
- >>>.v-calendar-weekly
+  >>>.v-calendar-weekly
     &__head-weekday
       font-size 12px
       background #f3f3ee
